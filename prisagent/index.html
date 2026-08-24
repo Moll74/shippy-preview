@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Shippy Prisagent</title>
+<style>
+/* Committed single visual world: a control-room demo. Explicit colors throughout. */
+:root{
+  --bg:#051726; --panel:#0b2537; --panel-2:#10304a; --line:#1d425c;
+  --ink:#e8f0ee; --mut:#8fa9b8; --faint:#5f7889;
+  --green:#34bc53; --green-lift:#57d873; --beak:#f4ce23;
+  --red:#f07f72;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+p{margin:0}
+.k{font:600 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--green-lift)}
+
+header{padding:46px 0 30px}
+header h1{font-size:clamp(28px,5vw,42px);font-weight:800;color:#fff;margin:12px 0 12px}
+header p{color:var(--mut);max-width:64ch}
+.demo-note{
+  margin-top:14px;display:inline-block;font:500 12.5px/1.4 var(--mono);
+  color:var(--beak);border:1px solid rgba(244,206,35,.4);border-radius:8px;padding:7px 12px;
+}
+
+/* ---------- console ---------- */
+.console{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:10px 0 26px}
+.inrow{display:flex;gap:10px;flex-wrap:wrap}
+#q{
+  flex:1;min-width:240px;font:400 16px/1.4 var(--sans);color:var(--ink);
+  background:var(--bg);border:1.5px solid var(--line);border-radius:11px;padding:13px 15px;
+}
+#q:focus{outline:none;border-color:var(--green)}
+button{cursor:pointer;font:700 15px/1 var(--sans);border-radius:11px;border:1.5px solid transparent;transition:transform .12s}
+button:active{transform:translateY(1px)}
+#go{background:var(--beak);color:#16240a;padding:13px 20px}
+#mic{background:transparent;color:var(--ink);border-color:var(--line);padding:13px 15px;display:flex;align-items:center;gap:8px}
+#mic.rec{border-color:var(--red);color:var(--red);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(240,127,114,.15)}}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.examples button{
+  font-weight:600;font-size:13.5px;color:var(--mut);background:var(--panel-2);
+  border-color:var(--line);padding:9px 13px;border-radius:9px;text-align:left;line-height:1.35;
+}
+.examples button:hover{color:var(--ink);border-color:var(--green)}
+
+/* ---------- pipeline ---------- */
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:12px 0;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.stage.on{opacity:1;transform:none}
+.stage .sh{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.stage .num{font:600 11px/1 var(--mono);color:var(--faint);letter-spacing:.14em}
+.stage h3{font-size:16.5px;color:#fff}
+.stage .tag{margin-left:auto;font:600 10.5px/1 var(--mono);letter-spacing:.1em;padding:5px 9px;border-radius:99px}
+.tag.llm{color:var(--beak);border:1px solid rgba(244,206,35,.4)}
+.tag.det{color:var(--green-lift);border:1px solid rgba(52,188,83,.45)}
+.transcript{font-size:16px;color:var(--ink);background:var(--bg);border-radius:10px;padding:13px 15px;border-left:3px solid var(--green)}
+pre{margin:0;background:var(--bg);border-radius:10px;padding:13px 15px;font:400 13px/1.7 var(--mono);color:#a8dfb6;overflow-x:auto}
+pre b{color:var(--beak);font-weight:600}
+.path{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.node{
+  font:600 12.5px/1.3 var(--mono);background:var(--panel-2);border:1px solid var(--line);
+  border-radius:9px;padding:8px 11px;opacity:0;transform:scale(.92);transition:all .3s;
+}
+.node.on{opacity:1;transform:none;border-color:var(--green)}
+.node small{display:block;font-weight:400;color:var(--faint);font-size:10.5px;margin-top:2px}
+.arr{color:var(--faint);opacity:0;transition:opacity .3s}
+.arr.on{opacity:1}
+.calc{width:100%;border-collapse:collapse;font-size:14.5px}
+.calc td{padding:7px 4px;border-bottom:1px solid var(--line);color:var(--mut)}
+.calc td:last-child{text-align:right;font-family:var(--mono);color:var(--ink);white-space:nowrap}
+.calc tr.tot td{border-bottom:0;border-top:2px solid var(--green);color:#fff;font-weight:700;font-size:16px}
+.calc tr.tot td:last-child{color:var(--green-lift)}
+.src{font:500 10.5px/1 var(--mono);color:var(--faint);letter-spacing:.02em}
+.answer{font-size:17px;line-height:1.65;color:var(--ink)}
+.answer b{color:var(--green-lift)}
+.clarify{border-left:3px solid var(--beak);background:var(--bg);border-radius:10px;padding:13px 15px}
+.clarify p{color:var(--ink);margin-bottom:10px}
+.clarify button{font-size:13px;font-weight:600;color:var(--beak);background:transparent;border:1px solid rgba(244,206,35,.4);padding:8px 12px;border-radius:9px;margin:0 6px 6px 0}
+.lat{margin:6px 0 30px;font:500 12px/1 var(--mono);color:var(--faint);text-align:right}
+.lat b{color:var(--green-lift)}
+
+/* ---------- architecture ---------- */
+section.arch{padding:34px 0 20px;border-top:1px solid var(--line);margin-top:16px}
+section.arch h2{font-size:clamp(22px,3.4vw,30px);color:#fff;margin:10px 0 8px}
+section.arch > .wrap > p{color:var(--mut);max-width:70ch;margin-bottom:20px}
+.layers{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.layer{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+.layer .ln{font:700 13px/1.4 var(--mono);color:var(--green-lift)}
+.layer .ln small{display:block;font-weight:400;color:var(--faint);margin-top:4px;font-size:10.5px;letter-spacing:.04em}
+.layer p{font-size:14.5px;color:var(--mut);line-height:1.6}
+.layer p b{color:var(--ink)}
+.principle{background:rgba(52,188,83,.08);border:1px solid rgba(52,188,83,.35);border-left:4px solid var(--green);border-radius:12px;padding:16px 18px;margin:20px 0}
+.principle b{color:#fff}
+.principle p{color:var(--mut);font-size:15px}
+footer{padding:26px 0 44px;color:var(--faint);font-size:12.5px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="k">Shippy · AI Studio · Løsningsskitse</span>
+    <h1>Prisagenten: tal til dit fragtsystem</h1>
+    <p>
+      Kunden forklarer sit behov med almindelig tale. Agenten forstår det, slår op i
+      virksomhedshjernen — én struktureret vidensbase med alle rater, zoner, tillæg og
+      aftaler — og regner prisen deterministisk. Hvert tal kan spores til sin kilde.
+    </p>
+    <span class="demo-note">DEMO: agent-laget er simuleret med regler og et lille datasæt.
+    I produktion udføres forståelsen af en sprogmodel via SpiderIQ Gate — arkitekturen er den samme.</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="console">
+    <div class="inrow">
+      <input id="q" type="text" placeholder="Beskriv forsendelsen … fx: 120 pakker à 2,4 kg til Norge hver uge, DDP" aria-label="Beskriv forsendelsen" />
+      <button id="mic" type="button" title="Tal til agenten">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/></svg>
+        Tal
+      </button>
+      <button id="go" type="button">Beregn</button>
+    </div>
+    <div class="examples">
+      <button data-x="120 pakker à 2,4 kg til Norge hver uge, DDP">🇳🇴 120 pakker à 2,4 kg til Norge/uge, DDP</button>
+      <button data-x="Vi skal sende cirka 300 ordrer om måneden til England, de vejer omkring 800 gram, og det skal være fortoldet på forhånd">🇬🇧 300 ordrer/md til England, 0,8 kg, DDP</button>
+      <button data-x="Hvad koster 40 expresspakker på 6 kg til USA om måneden?">🇺🇸 40 expresspakker à 6 kg til USA/md</button>
+      <button data-x="200 pakker til Tyskland om ugen">🇩🇪 200 pakker til Tyskland/uge <em>(mangler vægt → agenten spørger)</em></button>
+    </div>
+  </div>
+
+  <div id="pipeline"></div>
+  <p class="lat" id="lat" hidden></p>
+
+  <section class="arch">
+    <div class="wrap" style="padding:0">
+      <span class="k">Arkitekturen bag</span>
+      <h2>Fem lag — og ét ufravigeligt princip</h2>
+      <p>Det, demoen viser på skærmen, er præcis de lag, produktionsløsningen består af:</p>
+
+      <div class="layers">
+        <div class="layer">
+          <span class="ln">1 · SAMTALE<small>STT/TTS · streaming</small></span>
+          <p>Tale-til-tekst på dansk og engelsk med streaming, så agenten begynder at forstå,
+          mens kunden stadig taler. Svar kan læses op (TTS) eller vises. Budget: <b>&lt;400 ms</b>
+          fra tale til tekst.</p>
+        </div>
+        <div class="layer">
+          <span class="ln">2 · AGENT<small>LLM via SpiderIQ Gate</small></span>
+          <p>Sprogmodellen oversætter fri tale til en <b>struktureret PriceQuery</b> (JSON-skema:
+          destination, vægt, volumen, frekvens, service, incoterm). Mangler noget, stiller den ét
+          præcist opklarende spørgsmål. Gate-laget giver modelvalg, sporing af hvert kald og
+          forbrugsstyring — så hver beregning kan auditeres.</p>
+        </div>
+        <div class="layer">
+          <span class="ln">3 · VIDEN<small>Knowledge graph + RAG</small></span>
+          <p><b>Grafen</b> (fx Neo4j/Memgraph) holder det relationelle og eksakte: transportører →
+          services → zoner → ratekort → tillæg → kundeaftaler, alt versioneret. <b>Vektor-RAG</b>
+          ved siden af håndterer det ustrukturerede: toldregler, kontraktklausuler, undtagelser.
+          Hybrid, fordi priser er relationer — ikke tekststumper.</p>
+        </div>
+        <div class="layer">
+          <span class="ln">4 · BEREGNING<small>Deterministisk motor</small></span>
+          <p>En regelmotor regner prisen af <b>samme input → samme output, altid</b>. Versionerede
+          ratekort, rabattrin fra aftalen, tillæg med gyldighedsdatoer. Svartid <b>&lt;50 ms</b>,
+          fuldt revisionsspor pr. linje.</p>
+        </div>
+        <div class="layer">
+          <span class="ln">5 · DATA<small>Pipeline &amp; kvalitet</small></span>
+          <p>Transportørernes ratekort (PDF/Excel) parses, valideres og skrives til grafen med
+          ikrafttrædelsesdato. Det er her, det afgøres, om løsningen bliver god: <b>datastrukturen
+          og hastigheden skal være rigtig fra starten</b> — ellers bliver alt ovenpå upræcist og langsomt.</p>
+        </div>
+      </div>
+
+      <div class="principle">
+        <b>Princippet: sprogmodellen regner aldrig selv.</b>
+        <p>LLM'en forstår og forklarer — grafen og regelmotoren leverer tallene. Derfor kan
+        agenten ikke "hallucinere" en pris: hvert beløb stammer fra en navngiven række i et
+        versioneret ratekort eller en paragraf i kundens aftale, og kilden vises med svaret.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Demo-datasættet (rater, tillæg, rabattrin) er opdigtet til illustration og er ikke Shippys
+    priser. Taleinput virker i Chrome/Edge, når browseren får mikrofonadgang; ellers skriv selv eller brug eksemplerne. Udarbejdet som løsningsskitse — AI Studio, august 2026.
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= VIRKSOMHEDSHJERNEN (demo-udgave) =================
+   I produktion: en versioneret graf. Her: samme struktur som JSON, så
+   opslagsstien — og sporbarheden — kan vises ærligt. */
+var GRAPH = {
+  zones: {
+    "Norge":{zone:"Norden", eu:false, flag:"🇳🇴"}, "Sverige":{zone:"Norden", eu:true, flag:"🇸🇪"},
+    "Finland":{zone:"Norden", eu:true, flag:"🇫🇮"}, "Tyskland":{zone:"EU", eu:true, flag:"🇩🇪"},
+    "Holland":{zone:"EU", eu:true, flag:"🇳🇱"}, "Frankrig":{zone:"EU", eu:true, flag:"🇫🇷"},
+    "England":{zone:"UK", eu:false, flag:"🇬🇧"}, "USA":{zone:"USA", eu:false, flag:"🇺🇸"}
+  },
+  rateCards: {   // kr. pr. pakke — RÆKKER: <1 kg, 1–5, 5–10, 10–20
+    "Norden":{v:"v2026-08", rows:[59,79,109,159]},
+    "EU":    {v:"v2026-08", rows:[69,95,129,189]},
+    "UK":    {v:"v2026-07", rows:[99,139,189,259]},
+    "USA":   {v:"v2026-07", rows:[149,199,279,399]}
+  },
+  surcharges:{
+    fuel:{pct:0.08, src:"Fuel-indeks uge 34/2026"},
+    customs:{amt:18, src:"Tillægsblad T-7 (told, ikke-EU)"},
+    ddp:{amt:12, src:"Tillægsblad T-9 (DDP-håndtering)"},
+    ddpNonEu:{amt:25, src:"Tillægsblad T-9 §2 (udlæg told/moms)"}
+  },
+  agreement:{
+    id:"Aftale SHP-2026-114",
+    tiers:[[400,0.12],[150,0.08],[50,0.05]]   // md-volumen → rabat
+  },
+  expressFactor:1.8
+};
+
+function band(kg){ return kg<1?0 : kg<5?1 : kg<10?2 : 3; }
+function bandLabel(kg){ return ["<1 kg","1–5 kg","5–10 kg","10–20 kg"][band(kg)]; }
+function kr(n){ return n.toLocaleString("da-DK",{minimumFractionDigits:2,maximumFractionDigits:2}) + " kr."; }
+
+/* ================= 2 · "AGENTEN" (simuleret ekstraktion) ================= */
+function extract(text){
+  var t = " " + text.toLowerCase() + " ";
+  var q = {country:null, kg:null, count:null, per:null, service:"Standard", incoterm:"DAP"};
+  for(var c in GRAPH.zones){
+    var keys = [c.toLowerCase()];
+    if(c==="England") keys.push("uk","storbritannien","britain");
+    if(c==="USA") keys.push("amerika","staterne");
+    if(keys.some(function(k){ return t.indexOf(k) !== -1; })) { q.country = c; break; }
+  }
+  var m = t.match(/(\d+[.,]\d+|\d+)\s*(?:kg|kilo)/);
+  if(m) q.kg = parseFloat(m[1].replace(",","."));
+  m = t.match(/(\d+)\s*(?:gram|g )/);
+  if(!q.kg && m) q.kg = parseInt(m[1],10)/1000;
+  m = t.match(/(\d+)\s*(?:pakker|ordrer|forsendelser|stk|expresspakker)/);
+  if(m) q.count = parseInt(m[1],10);
+  if(/uge|ugentlig/.test(t)) q.per = "uge";
+  else if(/måned|md\b|monthly/.test(t)) q.per = "måned";
+  if(/express|haster|hurtig/.test(t)) q.service = "Express";
+  if(/ddp|fortoldet|betaler tolden|told og moms betalt/.test(t)) q.incoterm = "DDP";
+  return q;
+}
+
+/* ================= 4 · BEREGNINGSMOTOREN (deterministisk) ================= */
+function calculate(q){
+  var z = GRAPH.zones[q.country], card = GRAPH.rateCards[z.zone];
+  var base = card.rows[band(q.kg)];
+  if(q.service === "Express") base = base * GRAPH.expressFactor;
+  var lines = [
+    {t:(q.service==="Express"?"Express-fragt":"Fragt") + ", zone " + z.zone + " · " + bandLabel(q.kg),
+     src:"Ratekort " + z.zone + " " + card.v + " · række " + (band(q.kg)+1) +
+         (q.service==="Express" ? " · faktor 1,8" : ""), amt:base}
+  ];
+  var fuel = base * GRAPH.surcharges.fuel.pct;
+  lines.push({t:"Brændstoftillæg 8 %", src:GRAPH.surcharges.fuel.src, amt:fuel});
+  if(!z.eu) lines.push({t:"Toldhåndtering (ikke-EU)", src:GRAPH.surcharges.customs.src, amt:GRAPH.surcharges.customs.amt});
+  if(q.incoterm==="DDP"){
+    lines.push({t:"DDP-håndtering", src:GRAPH.surcharges.ddp.src, amt:GRAPH.surcharges.ddp.amt});
+    if(!z.eu) lines.push({t:"Udlæg told/moms (DDP, ikke-EU)", src:GRAPH.surcharges.ddpNonEu.src, amt:GRAPH.surcharges.ddpNonEu.amt});
+  }
+  var sub = lines.reduce(function(s,l){ return s+l.amt; }, 0);
+  var monthly = q.count * (q.per==="uge" ? 4.33 : 1);
+  var disc = 0, tier = null;
+  GRAPH.agreement.tiers.some(function(tr){
+    if(monthly >= tr[0]){ disc = tr[1]; tier = tr[0]; return true; } return false;
+  });
+  var discAmt = sub * disc;
+  var per = sub - discAmt;
+  return {lines:lines, sub:sub, disc:disc, discAmt:discAmt, tier:tier, per:per,
+          monthly:monthly, monthlyTotal:per*monthly, zone:z, card:card};
+}
+
+/* ================= UI: pipeline ================= */
+var P = document.getElementById("pipeline"), LAT = document.getElementById("lat");
+var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function stage(num, title, tag, tagCls, inner){
+  var d = document.createElement("div");
+  d.className = "stage";
+  d.innerHTML = '<div class="sh"><span class="num">'+num+'</span><h3>'+title+'</h3>' +
+    (tag ? '<span class="tag '+tagCls+'">'+tag+'</span>' : '') + '</div>' + inner;
+  P.appendChild(d);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ d.classList.add("on"); }); });
+  return d;
+}
+function wait(ms){ return new Promise(function(r){ setTimeout(r, reduce ? 0 : ms); }); }
+function esc(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+
+function run(text){
+  P.innerHTML = ""; LAT.hidden = true;
+  var t0 = performance.now();
+
+  stage("TRIN 1", "Transskription", "STREAMING STT", "det",
+    '<div class="transcript">&ldquo;' + esc(text) + '&rdquo;</div>');
+
+  return wait(450).then(function(){
+    var q = extract(text);
+    var json = JSON.stringify({
+      destination: q.country, vaegt_kg: q.kg, antal: q.count,
+      frekvens: q.per, service: q.service, incoterm: q.incoterm
+    }, null, 2).replace(/"(destination|vaegt_kg|antal|frekvens|service|incoterm)"/g, '<b>"$1"</b>');
+    stage("TRIN 2", "Agenten forstår behovet → struktureret PriceQuery", "LLM · SPIDERIQ GATE", "llm",
+      "<pre>" + json + "</pre>");
+
+    // manglende felter → agenten spørger, i stedet for at gætte
+    var missing = !q.country ? "destination" : q.kg==null ? "vægt" : q.count==null ? "antal" : !q.per ? "frekvens" : null;
+    if(missing){
+      return wait(420).then(function(){
+        var opts = {
+          "vægt": ["à 1,2 kg","à 3 kg","à 7 kg"],
+          "destination": ["til Norge","til Tyskland","til USA"],
+          "antal": ["100 pakker","300 pakker"],
+          "frekvens": ["om ugen","om måneden"]
+        }[missing];
+        var s = stage("TRIN 2b", "Opklarende spørgsmål", "LLM · SPIDERIQ GATE", "llm",
+          '<div class="clarify"><p>' + ({
+            "vægt":"Hvad vejer en typisk pakke?",
+            "destination":"Hvilket land skal der sendes til?",
+            "antal":"Hvor mange pakker drejer det sig om?",
+            "frekvens":"Er det pr. uge eller pr. måned?"
+          }[missing]) + "</p>" +
+          opts.map(function(o){ return '<button type="button" data-add="'+o+'">'+o+"</button>"; }).join("") +
+          "</div>");
+        s.querySelectorAll("[data-add]").forEach(function(b){
+          b.addEventListener("click", function(){
+            var nt = text + " " + b.getAttribute("data-add");
+            document.getElementById("q").value = nt;
+            run(nt);
+          });
+        });
+      });
+    }
+
+    return wait(420).then(function(){
+      var z = GRAPH.zones[q.country];
+      var nodes = [
+        ["Kunde","demo-webshop"], [GRAPH.agreement.id,"rabattrin §4"],
+        [z.flag+" "+q.country,"→ zone "+z.zone],
+        ["Ratekort "+z.zone,GRAPH.rateCards[z.zone].v+" · "+bandLabel(q.kg)],
+        ["Tillæg","fuel"+(z.eu?"":" · told")+(q.incoterm==="DDP"?" · DDP":"")],
+        ["Pris","beregnes →"]
+      ];
+      var html = '<div class="path">' + nodes.map(function(n,i){
+        return (i? '<span class="arr">→</span>':'') +
+          '<span class="node">'+n[0]+'<small>'+n[1]+"</small></span>";
+      }).join("") + "</div>";
+      var s = stage("TRIN 3", "Opslag i virksomhedshjernen", "GRAF · <50 MS", "det", html);
+      var els = s.querySelectorAll(".node,.arr");
+      els.forEach(function(el,i){ setTimeout(function(){ el.classList.add("on"); }, reduce?0:i*120); });
+      return wait(reduce?0:els.length*120+250).then(function(){ return q; });
+    }).then(function(q){
+      var r = calculate(q);
+      var rows = r.lines.map(function(l){
+        return "<tr><td>"+l.t+'<br><span class="src">'+l.src+"</span></td><td>"+kr(l.amt)+"</td></tr>";
+      }).join("");
+      if(r.disc > 0){
+        rows += '<tr><td>Volumenrabat '+(r.disc*100).toFixed(0)+' % (≥'+r.tier+' pk./md)'+
+          '<br><span class="src">'+GRAPH.agreement.id+' §4</span></td><td>−'+kr(r.discAmt)+"</td></tr>";
+      }
+      rows += '<tr class="tot"><td>Pris pr. pakke</td><td>'+kr(r.per)+"</td></tr>";
+      stage("TRIN 4", "Deterministisk beregning", "REGELMOTOR", "det",
+        '<table class="calc">'+rows+"</table>");
+
+      return wait(420).then(function(){
+        var freq = q.per==="uge" ? q.count+" pakker om ugen (≈ "+Math.round(r.monthly)+" pr. måned)"
+                                 : q.count+" pakker om måneden";
+        stage("TRIN 5", "Svar til kunden", "LLM FORMULERER · TAL FRA MOTOREN", "llm",
+          '<p class="answer">Med '+freq+' à '+String(q.kg).replace(".",",")+" kg til "+q.country+
+          " ("+q.service+", "+q.incoterm+") lander prisen på <b>"+kr(r.per)+" pr. pakke</b> — cirka <b>"+
+          Math.round(r.monthlyTotal).toLocaleString("da-DK")+" kr. pr. måned</b>"+
+          (r.disc>0 ? ", inklusive "+(r.disc*100).toFixed(0)+" % volumenrabat fra jeres aftale" : "")+
+          ". Hver linje ovenfor kan spores til ratekort, tillægsblad eller aftaleparagraf.</p>");
+        var ms = Math.round(performance.now()-t0);
+        LAT.hidden = false;
+        LAT.innerHTML = "Samlet demo-svartid: <b>"+(ms/1000).toFixed(1)+" s</b> — heraf er graf-opslag og beregning <b>&lt;5 ms</b>; resten er bevidst tempo, så trinnene kan følges.";
+      });
+    });
+  });
+}
+
+/* ---------- wiring ---------- */
+document.getElementById("go").addEventListener("click", function(){
+  var v = document.getElementById("q").value.trim();
+  if(v) run(v);
+});
+document.getElementById("q").addEventListener("keydown", function(e){
+  if(e.key === "Enter" && this.value.trim()) run(this.value.trim());
+});
+document.querySelectorAll(".examples [data-x]").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.getElementById("q").value = b.getAttribute("data-x");
+    run(b.getAttribute("data-x"));
+  });
+});
+
+/* Taleinput: ægte talegenkendelse hvor browseren tillader det (Chrome/Edge,
+   førsteparts-side med mikrofontilladelse). Blokeres den — fx i et sandboxet
+   miljø eller Safari — vises en forklaring i stedet. Aldrig en død knap. */
+var mic = document.getElementById("mic");
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+function micNote(msg){
+  var old = document.getElementById("micnote");
+  if(old) old.remove();
+  var n = document.createElement("div");
+  n.id = "micnote"; n.className = "clarify"; n.style.marginTop = "14px";
+  n.innerHTML = "<p>" + msg + " Skriv i stedet selv, eller brug et af eksemplerne ovenfor — svaret er det samme.</p>";
+  mic.closest(".console").appendChild(n);
+}
+
+mic.addEventListener("click", function(){
+  var old = document.getElementById("micnote");
+  if(old) old.remove();
+  if(!SR){
+    micNote("<b>Taleinput understøttes ikke i denne browser.</b> Brug Chrome eller Edge for at tale til agenten.");
+    return;
+  }
+  try{
+    var rec = new SR();
+    rec.lang = "da-DK"; rec.interimResults = true;
+    mic.classList.add("rec");
+    var got = false;
+    rec.onresult = function(e){
+      got = true;
+      var t = Array.prototype.map.call(e.results, function(r){ return r[0].transcript; }).join(" ");
+      document.getElementById("q").value = t;
+      if(e.results[e.results.length-1].isFinal){ mic.classList.remove("rec"); rec.stop(); run(t); }
+    };
+    rec.onerror = function(e){
+      mic.classList.remove("rec");
+      if(e.error === "not-allowed" || e.error === "service-not-allowed"){
+        micNote("<b>Browseren gav ikke adgang til mikrofonen.</b> Tillad mikrofon for siden og prøv igen.");
+      } else if(e.error !== "aborted" && e.error !== "no-speech"){
+        micNote("<b>Taleinput kunne ikke starte her.</b>");
+      }
+    };
+    rec.onend = function(){ mic.classList.remove("rec"); };
+    rec.start();
+  }catch(err){
+    mic.classList.remove("rec");
+    micNote("<b>Taleinput kunne ikke starte i dette miljø.</b>");
+  }
+});
+})();
+</script>
+</body>
+</html>
