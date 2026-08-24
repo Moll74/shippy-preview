@@ -110,9 +110,10 @@ footer{padding:26px 0 44px;color:var(--faint);font-size:12.5px;line-height:1.6}
     <a href="/shippy-preview/priser" style="font:600 12px/1 var(--mono);color:var(--mut);text-decoration:none;letter-spacing:.06em">&larr; TILBAGE TIL PRISER</a><br><br><span class="k">Shippy · Koncept · Løsningsskitse</span>
     <h1>Prisagenten: tal til dit fragtsystem</h1>
     <p>
-      Kunden forklarer sit behov med almindelig tale. Agenten forstår det, slår op i
-      virksomhedshjernen — én struktureret vidensbase med alle rater, zoner, tillæg og
-      aftaler — og regner prisen deterministisk. Hvert tal kan spores til sin kilde.
+      Kunden forklarer sit behov med almindelig tale — og mangler der noget, spørger agenten
+      selv efter det, én detalje ad gangen, indtil den har alt, hvad beregningen kræver.
+      Derefter slår den op i virksomhedshjernen — én struktureret vidensbase med alle rater,
+      zoner, tillæg og aftaler — og regner prisen deterministisk. Hvert tal kan spores til sin kilde.
     </p>
     <span class="demo-note">DEMO: agent-laget er simuleret med regler og et lille datasæt.
     I produktion udføres forståelsen af en sprogmodel via SpiderIQ Gate — arkitekturen er den samme.</span>
@@ -136,8 +137,9 @@ footer{padding:26px 0 44px;color:var(--faint);font-size:12.5px;line-height:1.6}
       <button data-x="200 pakker til Tyskland om ugen">🇩🇪 200 pakker til Tyskland/uge <em>(mangler vægt → agenten spørger)</em></button>
     </div>
     <p style="margin:12px 0 0;font:500 12px/1.5 var(--mono);color:var(--faint)">
-      TALE: tryk <b style="color:var(--ink)">Tal</b>, sig dit behov i dit eget tempo — pauser er
-      okay — og tryk igen, når du er færdig. Alt kan rettes i feltet bagefter.</p>
+      TIP: skriv gerne kort og ufuldstændigt — fx ”200 pakker til Tyskland” — og se agenten
+      selv spørge efter resten, til beregningen kan laves. TALE: tryk <b style="color:var(--ink)">Tal</b>,
+      sig dit behov i dit eget tempo — pauser er okay — og tryk igen, når du er færdig.</p>
   </div>
 
   <div id="pipeline"></div>
