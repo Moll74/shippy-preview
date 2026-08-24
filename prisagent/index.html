@@ -249,8 +249,10 @@ function extract(text){
   if(m) q.kg = parseFloat(m[1].replace(",","."));
   m = t.match(/(\d+)\s*(?:gram|g )/);
   if(!q.kg && m) q.kg = parseInt(m[1],10)/1000;
-  m = t.match(/(\d+)\s*(?:pakker|ordrer|forsendelser|stk|expresspakker)/);
-  if(m) q.count = parseInt(m[1],10);
+  var WORDS = {"en":1,"én":1,"to":2,"tre":3,"fire":4,"fem":5,"seks":6,"syv":7,
+               "otte":8,"ni":9,"ti":10,"tyve":20,"halvtreds":50,"hundrede":100};
+  m = t.match(/(\d+|en|én|to|tre|fire|fem|seks|syv|otte|ni|ti|tyve|halvtreds|hundrede)\s*(?:pakker|pakke|ordrer|forsendelser|stk|expresspakker)/);
+  if(m) q.count = WORDS[m[1]] || parseInt(m[1],10);
   if(/uge|ugentlig/.test(t)) q.per = "uge";
   else if(/måned|md\b|monthly/.test(t)) q.per = "måned";
   if(/express|haster|hurtig/.test(t)) q.service = "Express";
@@ -318,13 +320,41 @@ function run(text){
     stage("TRIN 2", "Agenten forstår behovet → struktureret PriceQuery", "LLM · SPIDERIQ GATE", "llm",
       "<pre>" + json + "</pre>");
 
+    // Nævner brugeren et land, demoen ikke dækker, skal agenten SIGE det —
+    // ikke lade som om landet ikke findes. (Fundet i brugertest: "Sydafrika".)
+    if(!q.country){
+      var um = text.toLowerCase().match(/\btil\s+([a-zæøåü-]{3,})/);
+      var noise = ["england","norge","sverige","finland","tyskland","holland","frankrig","usa",
+                   "gengæld","eksempel","dels","sidst"];
+      if(um && noise.indexOf(um[1]) === -1){
+        var uword = um[1].charAt(0).toUpperCase() + um[1].slice(1);
+        return wait(420).then(function(){
+          var s2 = stage("TRIN 2b", "Uden for demo-datasættet", "LLM · SPIDERIQ GATE", "llm",
+            '<div class="clarify"><p><b>' + uword + '</b> ligger uden for denne demos datasæt — '
+            + 'demoen dækker kun 8 destinationer med opdigtede rater. I produktionsudgaven dækker '
+            + 'virksomhedshjernen alle de destinationer, jeres ratekort gør. '
+            + 'Prøv i stedet en af demoens destinationer:</p>'
+            + Object.keys(GRAPH.zones).map(function(c){
+                return '<button type="button" data-swap="'+c+'">'+GRAPH.zones[c].flag+" "+c+"</button>";
+              }).join("") + "</div>");
+          s2.querySelectorAll("[data-swap]").forEach(function(b){
+            b.addEventListener("click", function(){
+              var nt = text.replace(new RegExp(um[1], "i"), b.getAttribute("data-swap"));
+              document.getElementById("q").value = nt;
+              run(nt);
+            });
+          });
+        });
+      }
+    }
+
     // manglende felter → agenten spørger, i stedet for at gætte
     var missing = !q.country ? "destination" : q.kg==null ? "vægt" : q.count==null ? "antal" : !q.per ? "frekvens" : null;
     if(missing){
       return wait(420).then(function(){
         var opts = {
           "vægt": ["à 1,2 kg","à 3 kg","à 7 kg"],
-          "destination": ["til Norge","til Tyskland","til USA"],
+          "destination": ["til Norge","til Sverige","til Finland","til Tyskland","til Holland","til Frankrig","til England","til USA"],
           "antal": ["100 pakker","300 pakker"],
           "frekvens": ["om ugen","om måneden"]
         }[missing];
@@ -336,6 +366,7 @@ function run(text){
             "frekvens":"Er det pr. uge eller pr. måned?"
           }[missing]) + "</p>" +
           opts.map(function(o){ return '<button type="button" data-add="'+o+'">'+o+"</button>"; }).join("") +
+          '<p style="margin:8px 0 0;font-size:12.5px;color:var(--faint)">… eller tilføj svaret i feltet øverst og tryk Beregn.</p>' +
           "</div>");
         s.querySelectorAll("[data-add]").forEach(function(b){
           b.addEventListener("click", function(){
