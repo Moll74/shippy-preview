@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shippy Relanceringsrapport</title>
+<style>
+:root{
+  --bg:#f4f0e9;
+  --surface:#fdfbf7;
+  --surface-2:#ece6da;
+  --ink:#12232e;
+  --mut:#5c6f78;
+  --faint:#8a99a1;
+  --line:#d9cfc0;
+  --line-soft:#e6ddcf;
+  --green:#1f8f3c;
+  --green-soft:rgba(31,143,60,.10);
+  --amber:#b98a06;
+  --amber-soft:rgba(244,206,35,.14);
+  --red:#b3382c;
+  --red-soft:rgba(179,56,44,.09);
+  --navy:#0b2b41;
+  --navy-deep:#051726;
+  --on-navy:#e8f0ee;
+  --on-navy-mut:#94abb8;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --disp:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a1c29;
+    --surface:#10283a;
+    --surface-2:#173347;
+    --ink:#e9f1ef;
+    --mut:#9db1bc;
+    --faint:#718996;
+    --line:#24445c;
+    --line-soft:#1c394e;
+    --green:#57d873;
+    --green-soft:rgba(87,216,115,.12);
+    --amber:#f4ce23;
+    --amber-soft:rgba(244,206,35,.12);
+    --red:#f07f72;
+    --red-soft:rgba(240,127,114,.12);
+    --navy:#10283a;
+    --navy-deep:#04121d;
+    --on-navy:#e9f1ef;
+    --on-navy-mut:#9db1bc;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a1c29;
+  --surface:#10283a;
+  --surface-2:#173347;
+  --ink:#e9f1ef;
+  --mut:#9db1bc;
+  --faint:#718996;
+  --line:#24445c;
+  --line-soft:#1c394e;
+  --green:#57d873;
+  --green-soft:rgba(87,216,115,.12);
+  --amber:#f4ce23;
+  --amber-soft:rgba(244,206,35,.12);
+  --red:#f07f72;
+  --red-soft:rgba(240,127,114,.12);
+  --navy:#10283a;
+  --navy-deep:#04121d;
+  --on-navy:#e9f1ef;
+  --on-navy-mut:#9db1bc;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:400 16.5px/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.02em;line-height:1.12;text-wrap:balance;margin:0}
+p{margin:0}
+
+/* ---------- header ---------- */
+.hd{background:var(--navy-deep);color:var(--on-navy);padding:56px 0 44px}
+.hd .k{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#57d873;
+}
+.hd h1{font-size:clamp(30px,5.5vw,46px);font-weight:900;color:#fff;margin:14px 0 14px}
+.hd p{color:var(--on-navy-mut);max-width:64ch;font-size:17px}
+.hd b{color:#fff}
+.hd .meta{
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 22px;
+  font-family:var(--mono);font-size:12.5px;color:var(--on-navy-mut);
+}
+
+/* ---------- sections ---------- */
+section{padding:44px 0 8px}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--green);display:block;margin-bottom:10px;
+}
+h2{font-size:clamp(23px,3.4vw,31px);font-weight:800;margin-bottom:16px}
+h3{font-size:19px;font-weight:700;margin:26px 0 10px}
+section > .wrap > p{color:var(--mut);max-width:70ch;margin-bottom:14px}
+b,strong{color:var(--ink)}
+a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- alert cards ---------- */
+.alert{
+  border-radius:14px;padding:20px 22px;margin:14px 0;
+  border:1px solid var(--line);background:var(--surface);
+  border-left:5px solid var(--faint);
+}
+.alert.crit{border-left-color:var(--red);background:var(--red-soft)}
+.alert.warn{border-left-color:var(--amber);background:var(--amber-soft)}
+.alert.ok{border-left-color:var(--green);background:var(--green-soft)}
+.alert .tag{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;display:block;margin-bottom:7px;
+}
+.crit .tag{color:var(--red)} .warn .tag{color:var(--amber)} .ok .tag{color:var(--green)}
+.alert b.t{display:block;font-family:var(--disp);font-size:17.5px;margin-bottom:6px}
+.alert p{color:var(--mut);font-size:15.5px;line-height:1.6}
+
+/* ---------- tables ---------- */
+.tblwrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--surface);font-size:15px}
+th{
+  text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);padding:12px 16px;
+  border-bottom:2px solid var(--line);white-space:nowrap;
+}
+td{padding:11px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--mut)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink);font-weight:600}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.good{color:var(--green);font-weight:700}
+.bad{color:var(--red);font-weight:700}
+.mid{color:var(--amber);font-weight:700}
+
+/* ---------- big numbers ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px}
+.stat .n{
+  font-family:var(--disp);font-weight:900;font-size:clamp(22px,3vw,30px);
+  letter-spacing:-.02em;color:var(--green);line-height:1;font-variant-numeric:tabular-nums;
+}
+.stat .l{display:block;margin-top:7px;font-size:13px;color:var(--mut);line-height:1.45}
+
+/* ---------- checklist ---------- */
+.list{margin:12px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.list li{
+  position:relative;padding:12px 16px 12px 42px;background:var(--surface);
+  border:1px solid var(--line-soft);border-radius:10px;font-size:15px;color:var(--mut);line-height:1.55;
+}
+.list li::before{
+  position:absolute;left:14px;top:11px;font-size:15px;
+}
+.list.done li::before{content:"✓";color:var(--green);font-weight:800}
+.list.todo li::before{content:"→";color:var(--amber);font-weight:800}
+.list li b{color:var(--ink)}
+
+/* ---------- footer ---------- */
+.ft{margin-top:48px;padding:26px 0 40px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--faint)}
+code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);
+  padding:2px 6px;border-radius:5px;color:var(--ink)}
+
+/* ---------- print ---------- */
+@page{size:A4;margin:14mm 13mm}
+@media print{
+  body{font-size:11.5px;background:#fff}
+  .hd{padding:26px 0 22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{padding:18px 0 4px}
+  .alert,.stat,.list li{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tblwrap{overflow:visible;break-inside:avoid}
+  table{min-width:0;font-size:10.5px}
+  h2{font-size:19px}
+  h3{font-size:14px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+
+<header class="hd">
+  <div class="wrap">
+    <span class="k">Statusrapport · shippy.dk-relanceringen</span>
+    <h1>Fra brochure med huller til beslutningsværktøj</h1>
+    <p>
+      Sammenligning af det nuværende live-site og det nye udkast, målt mod SEO-kortlægningen,
+      100-dages-planen og 15-punkts-analysen af brugervenlighed og konvertering.
+      Rapporten fremhæver det, der haster — også det, der haster på det <b>nuværende</b> site,
+      uafhængigt af relanceringen.
+    </p>
+    <div class="meta">
+      <span>24. august 2026</span>
+      <span>Grundlag: 4 analyser + Wayback-kortlægning</span>
+      <span>Nyt udkast: 72 sider, verificeret</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Det vigtigste først</span>
+    <h2>Tre ting på det nuværende site kan ikke vente på relanceringen</h2>
+    <p>
+      Disse tre er aktive skader i dag. De kræver adgang til Lovable-systemet og kan
+      klares på under en time tilsammen.
+    </p>
+
+    <div class="alert crit">
+      <span class="tag">Kritisk · Jura</span>
+      <b class="t">1 · Sitet indsamler persondata uden en persondatapolitik</b>
+      <p>
+        Kontaktformularen indsamler navn, virksomhed, e-mail, telefon og behov — med en
+        samtykke-checkboks. Men footerens links til <b>persondatapolitik, cookiepolitik og
+        handelsbetingelser rammer alle 404</b>. Siderne findes ikke. Det er et direkte brud
+        på GDPR's oplysningspligt (art. 13) og har stået sådan siden lanceringen.
+        Kortlægningen viser desuden, at <b>det gamle WordPress-site heller aldrig havde
+        juridiske sider</b> — Wayback har intet arkiveret. Problemet er altså ikke opstået
+        ved ombygningen; det har været der hele tiden. Interim-fix: afpublicér formularen
+        eller læg som minimum en simpel persondatapolitik op på URL'en i dag.
+      </p>
+    </div>
+
+    <div class="alert crit">
+      <span class="tag">Kritisk · Troværdighed</span>
+      <b class="t">2 · Bloggen viser sine egne skabelon-instruktioner til offentligheden</b>
+      <p>
+        Alle tre blogindlæg indeholder ordret synlig tekst som
+        <code>&#123;&#123; COPY: Frank fylder hovedindhold ind her — fx 800-1200 ord &#125;&#125;</code>.
+        Det læses af kunder, Google og AI-svarmaskiner lige nu. For en virksomhed, der sælger
+        <i>omhu</i>, er det den dyreste enkeltfejl på sitet. Fix: afpublicér eller
+        noindex de tre indlæg i dag.
+      </p>
+    </div>
+
+    <div class="alert crit">
+      <span class="tag">Kritisk · Konvertering</span>
+      <b class="t">3 · "Moneyback" i hovedmenuen er et dødt link</b>
+      <p>
+        Menupunktet peger på <code>moneyback.shippy.dk</code>, som ikke svarer. Et
+        hovedmenupunkt, der fejler, undergraver alt andet. Fix: fjern punktet, indtil
+        siden findes (den er bygget i det nye udkast).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Sammenligning</span>
+    <h2>Gammelt site vs. nyt udkast i tal</h2>
+    <div class="tblwrap"><table>
+      <tr><th>Måling</th><th>Live-site i dag</th><th>Nyt udkast</th></tr>
+      <tr><td>Sider</td><td class="num">39 <span class="bad">(12 under 200 ord)</span></td><td class="num good">72, alle med reelt indhold</td></tr>
+      <tr><td>Blog / viden</td><td class="num bad">3 stubbe · 303 ord · synlige pladsholdere</td><td class="num good">22 guides · ~30.000 ord</td></tr>
+      <tr><td>De 20 slettede artikler</td><td class="bad">404 uden redirects — værdien forvitrer</td><td class="good">Alle 20 genskabt fra Wayback + fuld 301-liste</td></tr>
+      <tr><td>Juridiske sider</td><td class="bad">404 (fandtes heller aldrig på WordPress-sitet)</td><td class="mid">Strukturerede udkast på plads — afventer jurist</td></tr>
+      <tr><td>Døde links</td><td class="bad">Moneyback + LinkedIn peger forkert</td><td class="good">9.400+ interne links · 0 døde (verificeret over HTTP)</td></tr>
+      <tr><td>Prisinformation</td><td class="bad">Ingen — heller ikke prismodellen</td><td class="good">Prisside med model, markedstal og interaktiv beregner</td></tr>
+      <tr><td>FAQ</td><td class="bad">Ingen på hele sitet</td><td class="good">48 spørgsmål + FAQ pr. serviceside, alt med schema</td></tr>
+      <tr><td>Sprog-tag</td><td class="bad">lang="en" på et dansk site</td><td class="good">lang="da" overalt</td></tr>
+      <tr><td>Delingsbillede (og:image)</td><td class="bad">Skærmbillede fra Lovable-preview</td><td class="good">Designede kort pr. side</td></tr>
+      <tr><td>Struktureret data</td><td class="mid">Kun basal Organization</td><td class="good">Organization, LocalBusiness ×2, Article, FAQPage, Breadcrumb</td></tr>
+      <tr><td>Mobil-CTA</td><td class="bad">Ingen synlig CTA under 1024 px</td><td class="good">Fast bundbar: Ring + fragttjek på alle sider</td></tr>
+      <tr><td>Søgning</td><td class="bad">Ingen</td><td class="good">Sitesøgning over 119 poster, æ/ø/å-tolerant</td></tr>
+      <tr><td>Tredjeparts-requests</td><td class="mid">Google Fonts (IP-udlevering, jf. LG München 2022)</td><td class="good">Nul — fonte selvhostet, ingen cookies, intet banner</td></tr>
+      <tr><td>AI-synlighed (GEO)</td><td class="bad">Ingen citérbare tal, ingen llms.txt</td><td class="mid">llms.txt, robots-stillingtagen, svarklare FAQ — mangler drifts-tal</td></tr>
+    </table></div>
+
+    <div class="stats">
+      <div class="stat"><span class="n">30.000</span><span class="l">ord genskabt indhold — planens punkt 1.9 løst uden nyskrivning</span></div>
+      <div class="stat"><span class="n">0</span><span class="l">døde links, cookies og eksterne requests i det nye udkast</span></div>
+      <div class="stat"><span class="n">8 mio. kr.</span><span class="l">dokumenteret besparelse — flyttet fra undersiden til forsiden som bærende bevis</span></div>
+      <div class="stat"><span class="n">3→7 · 2→6</span><span class="l">SEO- og GEO-karakter, estimeret efter rettelserne (loft: manglende drifts-tal)</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Juraen — det forsømte kapitel</span>
+    <h2>GDPR-status: aldrig på plads, nu næsten</h2>
+    <p>
+      Tidslinjen er værd at forstå, fordi den viser, at problemet er strukturelt, ikke en
+      enkelt forglemmelse:
+    </p>
+    <div class="tblwrap"><table>
+      <tr><th>Periode</th><th>Status</th></tr>
+      <tr><td>WordPress-sitet (til 2026)</td><td class="bad">Ingen juridiske sider overhovedet — intet arkiveret i Wayback, og 100-dages-planen bekræfter, at de skulle skrives fra bunden</td></tr>
+      <tr><td>Lovable-sitet (nu)</td><td class="bad">Footer-links til alle tre sider — som alle er 404. Samtidig indsamler formularen persondata med en samtykketekst, der henviser til ingenting</td></tr>
+      <tr><td>Nyt udkast</td><td class="mid">Alle tre sider bygget: rettighedsliste, Datatilsynet-klagevej, retsgrundlag, NSAB 2000-ansvarstekst. Cookiepolitikken kan sandfærdigt erklære: <b>ingen cookies, ingen tredjeparter, intet banner nødvendigt</b> — fonte er selvhostet, og temavalget forlader aldrig browseren</td></tr>
+    </table></div>
+    <h3>Det, kun mennesker kan lukke</h3>
+    <ul class="list todo">
+      <li><b>Jurist-gennemgang</b> af alle tre sider — de er udkast med markerede huller, ikke færdig jura</li>
+      <li><b>Konkrete slettefrister</b> for henvendelser (typisk 6–12 måneder — en forretningsbeslutning)</li>
+      <li><b>Navngivet databehandler-liste</b>: hosting, mailsystem, ordresystem, transportører</li>
+      <li><b>Handelsbetingelser ud over NSAB</b>: betaling, opsigelse, reklamation, værneting</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Hvad der er bygget</span>
+    <h2>Optimeringerne, grupperet</h2>
+
+    <h3>Indhold og SEO</h3>
+    <ul class="list done">
+      <li><b>Alle 20 slettede artikler genskabt</b> (28.400 ord + én nyskrevet guide) med oprindelige datoer og navngiven forfatter — inkl. den, hvis URL indeholdt en usynlig non-breaking hyphen</li>
+      <li><b>Komplet 301-redirect-kort</b> — hver destination verificeret at eksistere, kædede redirects elimineret, de tre blogstubbe peger på fulde artikler om samme emner</li>
+      <li><b>"Lagerhotel" i ét ord</b> i URL, titler og brødtekst med 301 fra de gamle stier (planens punkt 2.1)</li>
+      <li><b>Positionering skærpet</b>: "Lagerhotel · Fragt · Cross-border — for mode-, lifestyle- og webshopbrands" — Bleckmann-læringen, uden at usynliggøre fragtforretningen</li>
+      <li><b>Titles, metabeskrivelser, breadcrumbs og schema</b> på alle 72 sider, genereret fra ét indholdslag så intet kan drifte</li>
+    </ul>
+
+    <h3>Konvertering (15-punkts-analysens dyre fund)</h3>
+    <ul class="list done">
+      <li><b>Fast kontaktbar på mobil</b> — Ring + fragttjek på alle sider (analysens benchmark: +43 % leads; 44 % af trafik er mobil)</li>
+      <li><b>Beslutningsgrundlaget besvaret</b>: prismodel + beregner, onboarding-forløb, opsigelsesvarsel, Moneyback forklaret, 48 FAQ — alle ti ubesvarede købsspørgsmål fra analysen har nu svar</li>
+      <li><b>Formular reduceret</b> til 3 påkrævede felter + samtykke, med inline-validering (grønt flueben)</li>
+      <li><b>Værdi i CTA'erne</b>: "Få et gratis fragttjek", "Send og få mit fragttjek" — ikke "Send forespørgsel"</li>
+      <li><b>Sektions-links gjort til knapper</b>, sitesøgning tilføjet, scroll-animation kan aldrig efterlade blanke sektioner</li>
+    </ul>
+
+    <h3>Tillid og bevis</h3>
+    <ul class="list done">
+      <li><b>8 mio. kr.-besparelsen</b> (DM&amp;T) flyttet fra /partnere til hero + bevisbånd på forsiden</li>
+      <li><b>Rigtige kundelogoer</b> (Sorry Mom, Moneymum, Britt Sisseck) på forsiden og på den roterende pakke; rigtige partnerlogoer på ensartede plader</li>
+      <li><b>Kundecitater med udfaldsoverskrifter</b> ("Fra spisebord til professionel drift på få uger") — Bleckmann-mønstret, uden opfundne tal</li>
+      <li><b>Moneyback bygget som rigtig side</b> i stedet for et dødt menulink</li>
+      <li><b>Ansvarlighedsside</b>: socialt ansvar (medarbejdere med særlige hensyn), bæredygtig emballage, GOTS — det gamle sites /gots-URL peger nu et rigtigt sted hen</li>
+    </ul>
+
+    <h3>Privatliv og performance</h3>
+    <ul class="list done">
+      <li><b>Nul cookies, nul tredjeparts-requests</b> — fonte selvhostet (fjerner Google Fonts' IP-udlevering), intet cookiebanner nødvendigt</li>
+      <li><b>Ingen frameworks</b> — 3D og al adfærd er håndskrevet, hele forsiden vejer en brøkdel af konkurrenternes (Core Web Vitals er et rangeringssignal)</li>
+      <li><b>llms.txt + aktiv stillingtagen til AI-crawlere</b> — GEO-sporets tekniske fundament</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Åbne punkter</span>
+    <h2>Det, der skal afklares før lancering</h2>
+    <p>Alt herunder er flagget direkte på siderne som gule interne noter, der fjernes automatisk i produktionsbygget.</p>
+
+    <div class="alert warn">
+      <span class="tag">Beslutning · Frank</span>
+      <b class="t">Løfter og påstande, der binder</b>
+      <p>
+        "Det fakturerer vi ikke for"-panelet (intet minimumsforbrug, intet højsæsontillæg,
+        gratis integration, ingen binding) er den stærkeste differentiering på sitet — og
+        løfter, der skal kunne holdes. Hvert punkt skal godkendes eller slettes.
+        Moneyback-siden er skrevet ud fra navnet, fordi subdomænet er dødt — bekræft, at
+        ydelsen faktisk er refusionskrav mod transportører, ellers skal siden skrives om.
+      </p>
+    </div>
+
+    <div class="alert warn">
+      <span class="tag">Tilladelser</span>
+      <b class="t">Logoer og citater</b>
+      <p>
+        Kunde- og partnerlogoer er hentet fra deres egne sites og hostet lokalt. Skriftlig
+        tilladelse fra Sorry Mom, Moneymum og Britt Sisseck skal indhentes før lancering
+        (planens punkt 2.11 nævner det selv). Bekræft samtidig, at de tre partnerskaber er aktuelle.
+      </p>
+    </div>
+
+    <div class="alert warn">
+      <span class="tag">Data · opgave 1.15</span>
+      <b class="t">De fire manglende tal — GEO-loftet</b>
+      <p>
+        Pakker pr. år, leveringspræcision, ordrer pr. dag i højsæson, lagerkvadratmeter.
+        Bleckmann leder med seks hårde tal; Shippy har pladsen bygget og felterne markeret.
+        Uden dem kan en AI-svarmaskine forklare, <i>hvad</i> Shippy laver, men ikke citere
+        <i>hvor godt</i>. Samme gælder tal i de tre cases (kræver kundegodkendelse).
+        Der står ikke ét opdigtet tal i udkastet.
+      </p>
+    </div>
+
+    <div class="alert warn">
+      <span class="tag">Indhold</span>
+      <b class="t">Faktatjek af de genskabte artikler + rigtige fotos</b>
+      <p>
+        Alle 20 artikler bærer en synlig redaktionel note, fordi de nævner lageret i Vejle
+        (nu Herning og Grenaa) og staver "lager hotel" i to ord. Noterne fjernes, når
+        artiklerne er rettet. Dertil: en halv dags fotografering i Herning — heroen har et
+        foto-slot klar, og ægte driftsbilleder er det stærkeste enkeltgreb, Bleckmann-
+        sammenligningen udpegede. Bemærk: det nuværende sites herobillede er AI-genereret
+        (hånden vokser sammen med scanneren).
+      </p>
+    </div>
+
+    <div class="alert warn">
+      <span class="tag">Afklaring</span>
+      <b class="t">Tre små, men reelle</b>
+      <p>
+        1) To LinkedIn-sider findes (<code>/company/shippy-dk</code> og
+        <code>/company/shippy</code>) — planens punkt 1.8: vælg den primære.
+        2) Ingen verificeret Facebook/Instagram — <code>facebook.com/shippylogistics</code>
+        er et <b>svensk</b> firma og må ikke linkes. 3) GOTS: bekræft certificeringsstatus,
+        før afsnittet publiceres — en påstand uden dokumentation er værre end ingen.
+      </p>
+    </div>
+
+    <div class="alert ok">
+      <span class="tag">Deadline</span>
+      <b class="t">Black Friday: fredag 27. november 2026</b>
+      <p>
+        Alt højsæsonindhold skal stå klar senest <b>13. oktober</b> — webshops planlægger
+        deres højsæson i oktober. Black Friday-tjeklisten er genskabt og klar; det er
+        tallene og godkendelserne ovenfor, der er stien til lancering.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Scorekort</span>
+    <h2>15-punkts-analysen: før og efter</h2>
+    <div class="tblwrap"><table>
+      <tr><th>Område</th><th>Live-site</th><th>Nyt udkast</th></tr>
+      <tr><td>Brugervenlighed (15 trin)</td><td class="num"><span class="good">6 ✓</span> · <span class="mid">5 ⚠</span> · <span class="bad">4 ✗</span></td><td class="num"><span class="good">14 ✓</span> · <span class="mid">1 ⚠</span> · <span class="bad">0 ✗</span></td></tr>
+      <tr><td>Konvertering (6 trin)</td><td class="num"><span class="good">0 ✓</span> · <span class="mid">2 ⚠</span> · <span class="bad">3 ✗</span></td><td class="num"><span class="good">5 ✓</span> · <span class="mid">1 ⚠</span> · <span class="bad">0 ✗</span></td></tr>
+    </table></div>
+    <p style="font-size:14px">
+      De to tilbageværende ⚠: logo-marquee'en på forsiden er bevægelse (et bevidst designvalg —
+      kan gøres statisk på ét minut, hvis checklisten vejer tungere), og formularens
+      volumen-felt er fastholdt som påkrævet, fordi fragttjekket ikke kan regnes uden —
+      anbefalingen er at A/B-teste det mod kvalificerede leads, ikke rå antal.
+    </p>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    Udarbejdet 24. august 2026 på grundlag af SEO-/GEO-analysen, kortlægningen af det gamle
+    site, 100-dages-planen og 15-punkts-analysen. Alle tal om det nye udkast er verificeret
+    maskinelt (HTTP-linkcheck, schema-validering, browsertest). Procenttal fra
+    kursusmaterialet er benchmarks fra andre sites — retning, ikke prognose.
+  </div>
+</footer>

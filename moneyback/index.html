@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Moneyback — få penge tilbage for forsinkede pakker | Shippy</title>
+<meta name="description" content="Transportørerne skylder dig penge, når en pakke leveres for sent. Shippy Moneyback finder kravene i dine fragtfakturaer og henter beløbet hjem. Du betaler kun af det, vi rent faktisk får tilbage." />
+<link rel="canonical" href="https://www.shippy.dk/moneyback" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#051726" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Shippy" />
+<meta property="og:locale" content="da_DK" />
+<meta property="og:url" content="https://www.shippy.dk/moneyback" />
+<meta property="og:title" content="Moneyback — få penge tilbage for forsinkede pakker" />
+<meta property="og:description" content="Vi finder kravene i dine fragtfakturaer og henter pengene hjem. Du betaler kun af det, vi får tilbage." />
+<meta property="og:image" content="https://www.shippy.dk/img/shippy-moneyback-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Shippy Moneyback — refusion for forsinkede forsendelser" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@shippydk" />
+<meta name="twitter:title" content="Moneyback — få penge tilbage for forsinkede pakker" />
+<meta name="twitter:description" content="Vi finder kravene i dine fragtfakturaer og henter pengene hjem." />
+<meta name="twitter:image" content="https://www.shippy.dk/img/shippy-moneyback-og.jpg" />
+
+<link rel="stylesheet" href="/shippy-preview/assets/fonts.css" />
+<link rel="stylesheet" href="/shippy-preview/assets/shippy.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.shippy.dk/moneyback#webpage",
+      "url": "https://www.shippy.dk/moneyback",
+      "name": "Moneyback — få penge tilbage for forsinkede pakker",
+      "inLanguage": "da-DK",
+      "isPartOf": { "@id": "https://www.shippy.dk/#website" },
+      "breadcrumb": { "@id": "https://www.shippy.dk/moneyback#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.shippy.dk/moneyback#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Forside", "item": "https://www.shippy.dk/" },
+        { "@type": "ListItem", "position": 2, "name": "Moneyback", "item": "https://www.shippy.dk/moneyback" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.shippy.dk/moneyback#service",
+      "name": "Shippy Moneyback",
+      "serviceType": "Fragtrevision og refusionskrav",
+      "provider": { "@id": "https://www.shippy.dk/#organization" },
+      "areaServed": { "@type": "Country", "name": "Danmark" },
+      "description": "Gennemgang af fragtfakturaer for forsinkede leveringer og andre fejl, hvor transportøren skylder refusion, samt indsendelse og opfølgning på kravene."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.shippy.dk/moneyback#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kan man få penge tilbage for en forsinket pakke?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ja. De fleste transportører giver en leveringsgaranti på deres produkter, og bliver den ikke overholdt, kan afsenderen kræve fragten refunderet. Kravet skal som regel rejses aktivt inden for en frist, og refusionen sker ikke automatisk. Derfor er der hos mange webshops penge stående, som aldrig bliver hentet hjem." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad koster Shippy Moneyback?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Der er ingen fast pris og intet abonnement. Shippy tager en andel af det beløb, der rent faktisk kommer retur. Finder vi ingenting, betaler du ingenting." }
+        },
+        {
+          "@type": "Question",
+          "name": "Skal jeg være kunde hos Shippy for at bruge Moneyback?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nej. Moneyback er en selvstændig ydelse. Du kan bruge den, selvom du har dit lager et helt andet sted og sender med dine egne fragtaftaler." }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad skal I bruge for at komme i gang?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Adgang til dine fragtfakturaer og forsendelsesdata for den periode, der skal gennemgås. Typisk trækkes de direkte fra transportørens portal, når du har givet adgang." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ================= moneyback ================= */
+.mb-hero{background:var(--stage);color:var(--on-stage);position:relative;overflow:hidden}
+.mb-hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.4}
+.mb-hero-in{position:relative;z-index:2;padding:clamp(52px,7vw,88px) 0 clamp(48px,6vw,72px);max-width:66ch}
+.mb-hero h1{
+  font-size:clamp(34px,5.2vw,58px);font-weight:900;color:#fff;letter-spacing:-.034em;
+  font-variation-settings:"wdth" 86;margin:20px 0 0;line-height:1.05;
+}
+.mb-hero h1 em{
+  font-style:normal;color:var(--parrot);
+  background-image:linear-gradient(var(--parrot),var(--parrot));
+  background-size:100% 5px;background-position:0 100%;background-repeat:no-repeat;padding-bottom:4px;
+}
+.mb-hero p{margin-top:20px;font-size:clamp(17px,1.6vw,19.5px);color:#b9cdd8;line-height:1.62}
+.mb-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+
+.mb-how{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:m}
+@media (max-width:900px){.mb-how{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.mb-how{grid-template-columns:1fr}}
+.mb-how li{
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);
+  padding:26px 22px;display:flex;flex-direction:column;gap:10px;counter-increment:m;
+}
+.mb-how li::before{
+  content:counter(m,decimal-leading-zero);
+  font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--accent);
+}
+.mb-how h3{font-size:18.5px}
+.mb-how p{font-size:15px;color:var(--ink-mut);line-height:1.55}
+
+.mb-claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:18px}
+.mb-claims li{
+  background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--beak);
+  border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:7px;
+}
+.mb-claims b{font-family:var(--f-display);font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+.mb-claims span{font-size:15px;color:var(--ink-mut);line-height:1.55}
+
+.mb-risk{
+  background:var(--stage);color:var(--on-stage);border-radius:var(--r);
+  padding:clamp(28px,3.6vw,46px);border:1px solid var(--stage-line);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(24px,4vw,52px);align-items:center;
+}
+@media (max-width:820px){.mb-risk{grid-template-columns:1fr}}
+.mb-risk h2{color:#fff;font-size:clamp(26px,3.4vw,38px);font-variation-settings:"wdth" 88;max-width:18ch}
+.mb-risk p{margin-top:14px;color:var(--on-stage-mut);font-size:17px;line-height:1.62}
+.mb-price{
+  background:rgba(52,188,83,.10);border:1px solid rgba(52,188,83,.34);
+  border-radius:var(--r);padding:26px;text-align:center;
+}
+.mb-price .n{
+  font-family:var(--f-display);font-weight:900;font-variation-settings:"wdth" 86;
+  font-size:clamp(34px,4.4vw,48px);color:var(--parrot-lift);line-height:1;letter-spacing:-.03em;
+}
+.mb-price .k{display:block;margin-top:10px;font-size:15px;color:var(--on-stage-mut);line-height:1.5}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Spring til indhold</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/shippy-preview/" aria-label="Shippy — forside">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 6c-9 6-14 16-14 27 0 10 5 19 13 24 2-9 1-17-2-25-3-9-2-18 3-26z" fill="#2ba548"/>
+        <path d="M24 8c8 4 13 12 13 22 0 12-9 22-21 23 6-6 9-14 9-22 0-9-1-17-1-23z" fill="#34bc53"/>
+        <circle cx="40" cy="26" r="15" fill="#fff"/>
+        <circle cx="36" cy="24" r="4.6" fill="#22303a"/>
+        <path d="M52 22l11 5-11 6z" fill="#f4ce23"/>
+        <path d="M46 30l10 4-9 5z" fill="#f9a825"/>
+      </svg>
+      <span class="brand-name">Shippy</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hovedmenu">
+      <div class="has-menu">
+        <a href="/shippy-preview/services" class="nav-top" aria-expanded="false" aria-controls="mm-services">
+          Services
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-services">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/lagerhotel">Lagerhotel</a>
+            <p class="mm-blurb">Opbevaring, pluk &amp; pak og returflow</p>
+            <ul>
+              <li><a href="/shippy-preview/services/lagerhotel/varemodtagelse">Varemodtagelse</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/lagerstyring">Lagerstyring</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/pluk-og-pak">Pluk &amp; pak</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/returhaandtering">Returhåndtering</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/kvalitetskontrol">Kvalitetskontrol</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/webshop-integration">Webshop-integration</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/midlertidig-opbevaring">Midlertidig opbevaring</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/api-edi">API &amp; EDI</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/courier">Courier</a>
+            <p class="mm-blurb">Fragt og levering i hele Danmark</p>
+            <ul>
+              <li><a href="/shippy-preview/services/courier/dag-til-dag">Dag-til-dag</a></li>
+              <li><a href="/shippy-preview/services/courier/express">Express &amp; same-day</a></li>
+              <li><a href="/shippy-preview/services/courier/erhverv-privat">Erhverv &amp; privat</a></li>
+              <li><a href="/shippy-preview/services/courier/pakke-stykgods">Pakke &amp; stykgods</a></li>
+              <li><a href="/shippy-preview/services/courier/track-trace">Track &amp; trace</a></li>
+              <li><a href="/shippy-preview/services/courier/returdistribution">Returdistribution</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/logistics">Logistics</a>
+            <p class="mm-blurb">Import, eksport og cross-border</p>
+            <ul>
+              <li><a href="/shippy-preview/services/logistics/import-supply-chain">Import &amp; supply chain</a></li>
+              <li><a href="/shippy-preview/services/logistics/soefragt-luftfragt">Søfragt &amp; luftfragt</a></li>
+              <li><a href="/shippy-preview/services/logistics/cross-border">Cross-border &amp; IOSS</a></li>
+              <li><a href="/shippy-preview/services/logistics/lager-distribution">Lager &amp; distribution</a></li>
+              <li><a href="/shippy-preview/services/logistics/fleksible-losninger">Fleksible løsninger</a></li>
+              <li><a href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/cases" class="nav-top" aria-expanded="false" aria-controls="mm-cases">
+          Cases
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-cases">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/cases">Kundehistorier</a>
+            <p class="mm-blurb">Brands vi pakker for hver dag</p>
+            <ul>
+              <li><a href="/shippy-preview/cases/sorry-mom">Sorry Mom</a></li>
+              <li><a href="/shippy-preview/cases/moneymum">Moneymum</a></li>
+              <li><a href="/shippy-preview/cases/britt-sisseck">Britt Sisseck</a></li>
+              <li><a href="/shippy-preview/cases">Alle cases</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/partnere">Partnere</a>
+            <p class="mm-blurb">Organisationer vi arbejder sammen med</p>
+            <ul>
+              <li><a href="/shippy-preview/partnere#dmt">DM&amp;T — Dansk Mode &amp; Textil</a></li>
+              <li><a href="/shippy-preview/partnere#smvdanmark">SMVdanmark</a></li>
+              <li><a href="/shippy-preview/partnere#float">FLOAT</a></li>
+              <li><a href="/shippy-preview/partnere#bliv-partner">Bliv partner</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/blog" class="nav-top" aria-expanded="false" aria-controls="mm-viden">
+          Viden
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-viden">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/blog">Kom i gang</a>
+            <p class="mm-blurb">Det du bør vide, før du skifter</p>
+            <ul>
+              <li><a href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a></li>
+              <li><a href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a></li>
+              <li><a href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a></li>
+              <li><a href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/blog">Drift &amp; økonomi</a>
+            <p class="mm-blurb">Regnestykker og best practice</p>
+            <ul>
+              <li><a href="/shippy-preview/blog/logistikomkostning-pr-ordre">Logistikomkostning pr. ordre</a></li>
+              <li><a href="/shippy-preview/blog/returhaandtering-webshop">Returhåndtering</a></li>
+              <li><a href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a></li>
+              <li><a href="/shippy-preview/blog/international-forsendelse-ioss">International forsendelse &amp; IOSS</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/faq">Spørgsmål &amp; svar</a>
+            <p class="mm-blurb">48 spørgsmål, besvaret kort</p>
+            <ul>
+              <li><a href="/shippy-preview/faq">Alle spørgsmål</a></li>
+              <li><a href="/shippy-preview/faq#pris">Priser og økonomi</a></li>
+              <li><a href="/shippy-preview/faq#drift">Drift og kvalitet</a></li>
+              <li><a href="/shippy-preview/faq#fragt">Fragt og levering</a></li>
+              <li><a href="/shippy-preview/faq#intl">International handel</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/om-os" class="nav-top" aria-expanded="false" aria-controls="mm-om-os">
+          Om os
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-om-os">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/om-os">Om Shippy</a>
+            <p class="mm-blurb">Menneskene og måden vi arbejder på</p>
+            <ul>
+              <li><a href="/shippy-preview/om-os/vaerdier">Værdier</a></li>
+              <li><a href="/shippy-preview/om-os/vision">Vision</a></li>
+              <li><a href="/shippy-preview/om-os/mission">Mission</a></li>
+              <li><a href="/shippy-preview/om-os/team">Teamet</a></li>
+              <li><a href="/shippy-preview/om-os/ansvarlighed">Ansvarlighed</a></li>
+              <li><a href="/shippy-preview/karriere">Karriere</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <a href="/shippy-preview/priser">Priser</a>
+      <a href="/shippy-preview/kontakt">Kontakt</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="nav-money" href="/shippy-preview/moneyback">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14l-4 4 4 4"/><path d="M5 18h11a4 4 0 0 0 4-4V4"/></svg>
+        Moneyback
+      </a>
+      <button class="theme-btn" id="searchBtn" type="button" aria-label="Søg på sitet" aria-haspopup="dialog">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      </button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Skift mellem lyst og mørkt tema">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.8 6.8 0 0 0 10.8 10.8z"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+      <button class="burger" id="burger" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <details><summary>Services</summary>
+    <a class="dr-lead" href="/shippy-preview/services/lagerhotel">Lagerhotel</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/varemodtagelse">Varemodtagelse</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/lagerstyring">Lagerstyring</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/pluk-og-pak">Pluk &amp; pak</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/returhaandtering">Returhåndtering</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/kvalitetskontrol">Kvalitetskontrol</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/webshop-integration">Webshop-integration</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/midlertidig-opbevaring">Midlertidig opbevaring</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/api-edi">API &amp; EDI</a>
+    <a class="dr-lead" href="/shippy-preview/services/courier">Courier</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/dag-til-dag">Dag-til-dag</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/express">Express &amp; same-day</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/erhverv-privat">Erhverv &amp; privat</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/pakke-stykgods">Pakke &amp; stykgods</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/track-trace">Track &amp; trace</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/returdistribution">Returdistribution</a>
+    <a class="dr-lead" href="/shippy-preview/services/logistics">Logistics</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/import-supply-chain">Import &amp; supply chain</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/soefragt-luftfragt">Søfragt &amp; luftfragt</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/cross-border">Cross-border &amp; IOSS</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/lager-distribution">Lager &amp; distribution</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/fleksible-losninger">Fleksible løsninger</a>
+    <a class="dr-sub" href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a>
+  </details>
+  <details><summary>Cases</summary>
+    <a class="dr-lead" href="/shippy-preview/cases">Kundehistorier</a>
+    <a class="dr-sub" href="/shippy-preview/cases/sorry-mom">Sorry Mom</a>
+    <a class="dr-sub" href="/shippy-preview/cases/moneymum">Moneymum</a>
+    <a class="dr-sub" href="/shippy-preview/cases/britt-sisseck">Britt Sisseck</a>
+    <a class="dr-sub" href="/shippy-preview/cases">Alle cases</a>
+    <a class="dr-lead" href="/shippy-preview/partnere">Partnere</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#dmt">DM&amp;T — Dansk Mode &amp; Textil</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#smvdanmark">SMVdanmark</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#float">FLOAT</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#bliv-partner">Bliv partner</a>
+  </details>
+  <details><summary>Viden</summary>
+    <a class="dr-lead" href="/shippy-preview/blog">Kom i gang</a>
+    <a class="dr-sub" href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a>
+    <a class="dr-sub" href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a>
+    <a class="dr-sub" href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a>
+    <a class="dr-sub" href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a>
+    <a class="dr-lead" href="/shippy-preview/blog">Drift &amp; økonomi</a>
+    <a class="dr-sub" href="/shippy-preview/blog/logistikomkostning-pr-ordre">Logistikomkostning pr. ordre</a>
+    <a class="dr-sub" href="/shippy-preview/blog/returhaandtering-webshop">Returhåndtering</a>
+    <a class="dr-sub" href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a>
+    <a class="dr-sub" href="/shippy-preview/blog/international-forsendelse-ioss">International forsendelse &amp; IOSS</a>
+    <a class="dr-lead" href="/shippy-preview/faq">Spørgsmål &amp; svar</a>
+    <a class="dr-sub" href="/shippy-preview/faq">Alle spørgsmål</a>
+    <a class="dr-sub" href="/shippy-preview/faq#pris">Priser og økonomi</a>
+    <a class="dr-sub" href="/shippy-preview/faq#drift">Drift og kvalitet</a>
+    <a class="dr-sub" href="/shippy-preview/faq#fragt">Fragt og levering</a>
+    <a class="dr-sub" href="/shippy-preview/faq#intl">International handel</a>
+  </details>
+  <details><summary>Om os</summary>
+    <a class="dr-lead" href="/shippy-preview/om-os">Om Shippy</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/vaerdier">Værdier</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/vision">Vision</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/mission">Mission</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/team">Teamet</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/ansvarlighed">Ansvarlighed</a>
+    <a class="dr-sub" href="/shippy-preview/karriere">Karriere</a>
+  </details>
+  <a href="/shippy-preview/priser">Priser</a>
+  <a href="/shippy-preview/kontakt">Kontakt</a>
+  <a href="/shippy-preview/moneyback">Moneyback</a>
+  <a class="btn btn-primary" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+</div>
+<div class="search-ov" id="searchOv" role="dialog" aria-modal="true" aria-label="Søg" hidden>
+  <div class="search-box">
+    <input id="searchInput" type="search" placeholder="Søg i sider, guides og spørgsmål …" autocomplete="off" aria-label="Søgeord" />
+    <button class="search-close" id="searchClose" type="button" aria-label="Luk søgning">Esc</button>
+  </div>
+  <ul class="search-res" id="searchRes" role="listbox"></ul>
+  <p class="search-hint" id="searchHint">Skriv for at søge — fx "returhåndtering", "pris" eller "IOSS".</p>
+</div>
+
+<main id="main">
+
+  <section class="mb-hero">
+    <canvas id="ctaArt" aria-hidden="true"></canvas>
+    <div class="wrap mb-hero-in">
+      <span class="eyebrow">Shippy Moneyback</span>
+      <h1>Transportøren skylder dig penge.<br /><em>Vi henter dem hjem.</em></h1>
+      <p>
+        Når en pakke leveres for sent, dækker transportørens leveringsgaranti fragten.
+        Men refusionen kommer ikke af sig selv — kravet skal rejses, dokumenteres og følges op
+        inden for en frist. Det er der næsten ingen webshops, der når. Så bliver pengene stående.
+      </p>
+      <div class="mb-cta">
+        <a class="btn btn-primary" href="#start">
+          Få din fragt gennemgået
+          <svg class="arw" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-line" href="tel:+4560400000">Ring 60 40 00 00</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Sådan virker det</span>
+        <h2 class="h2" id="how-h">Du skal ikke gøre andet end at give os adgang.</h2>
+        <p class="lead">
+          Vi arbejder bagud i dine fragtdata. Du skal hverken skifte transportør, ændre din
+          opsætning eller flytte dit lager for at bruge Moneyback.
+        </p>
+      </div>
+      <ol class="mb-how">
+        <li class="rv">
+          <h3>Vi får adgang</h3>
+          <p>Du giver os adgang til dine fragtfakturaer og forsendelsesdata. Typisk trækkes de direkte fra transportørens portal.</p>
+        </li>
+        <li class="rv">
+          <h3>Vi gennemgår hver forsendelse</h3>
+          <p>Hver pakke holdes op mod den leveringsgaranti, du har betalt for. Vi finder dem, der ikke blev overholdt.</p>
+        </li>
+        <li class="rv">
+          <h3>Vi rejser kravene</h3>
+          <p>Kravene dokumenteres og indsendes inden for transportørens frist — og vi følger op, indtil de er afgjort.</p>
+        </li>
+        <li class="rv">
+          <h3>Du får pengene</h3>
+          <p>Refusionen krediteres på din konto hos transportøren eller udbetales. Du får en oversigt over, hvad der blev fundet.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-2)" aria-labelledby="claims-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Hvad vi leder efter</span>
+        <h2 class="h2" id="claims-h">Det er sjældent kun forsinkelser.</h2>
+        <p class="lead">
+          Når først fragtfakturaerne bliver gennemgået linje for linje, dukker der som regel
+          mere op end de sene leveringer.
+        </p>
+      </div>
+      <ul class="mb-claims">
+        <li><b>For sen levering</b><span>Pakker leveret efter den garanti, der var betalt for på produktet.</span></li>
+        <li><b>Forkert vægt eller volumen</b><span>Pakker afregnet efter et større mål end det, der faktisk blev sendt.</span></li>
+        <li><b>Dobbeltfakturering</b><span>Samme forsendelse afregnet to gange, ofte efter en omlevering.</span></li>
+        <li><b>Tillæg der ikke er aftalt</b><span>Gebyrer og surcharges, der ikke fremgår af din aftale.</span></li>
+        <li><b>Fakturerede returforsendelser</b><span>Returlabels afregnet, selvom de aldrig blev brugt.</span></li>
+        <li><b>Forkert zone eller produkt</b><span>Forsendelser afregnet på en dyrere zone end destinationen tilsiger.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="start" aria-labelledby="risk-h">
+    <div class="wrap">
+      <div class="mb-risk">
+        <div>
+          <span class="eyebrow">Ingen risiko</span>
+          <h2 id="risk-h">Finder vi ingenting, koster det ingenting.</h2>
+          <p>
+            Der er hverken abonnement, opstartsgebyr eller minimumspris. Vi tager en andel af
+            det beløb, der rent faktisk kommer retur — så vi tjener først, når du har fået penge.
+          </p>
+          <p style="margin-top:18px">
+            <a class="btn btn-primary" href="/shippy-preview/fragttjek">
+              Start med et gratis fragttjek
+              <svg class="arw" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+            </a>
+          </p>
+        </div>
+        <div class="mb-price">
+          <span class="n">0 kr.</span>
+          <span class="k">i opstart, abonnement og minimumspris.<br />Vi afregnes af det, der kommer retur.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-2)" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Spørgsmål om Moneyback</span>
+        <h2 class="h2" id="faq-h">Det plejer folk at spørge om.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Kan man overhovedet få penge tilbage for en forsinket pakke?</summary>
+          <div class="ans">
+            <p>Ja. De fleste transportører giver en leveringsgaranti på deres produkter, og bliver den ikke overholdt, kan du som afsender kræve fragten refunderet. Kravet skal som regel rejses aktivt inden for en frist, og refusionen sker ikke automatisk.</p>
+            <p style="margin-top:12px">Netop derfor står der penge tilbage hos mange webshops: ikke fordi kravet ikke er gyldigt, men fordi ingen når at rejse det.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Hvad koster det?</summary>
+          <div class="ans">
+            <p>Der er ingen fast pris og intet abonnement. Vi tager en andel af det beløb, der rent faktisk kommer retur. Finder vi ingenting, betaler du ingenting.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Skal jeg være kunde hos Shippy?</summary>
+          <div class="ans">
+            <p>Nej. Moneyback er en selvstændig ydelse. Du kan bruge den, selvom du har dit lager et helt andet sted og sender med dine egne fragtaftaler. Mange bruger den som den første, uforpligtende berøring med os.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Ødelægger det mit forhold til transportøren?</summary>
+          <div class="ans">
+            <p>Nej. Vi rejser kun krav, du har ret til efter den aftale, du allerede har, og vi gør det gennem transportørens egne kanaler og frister. Det er en almindelig del af at drive fragt professionelt.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Hvor langt tilbage kan I gå?</summary>
+          <div class="ans">
+            <p>Det afhænger af transportørens reklamationsfrist, som typisk løber i måneder frem for år. Derfor er det værd at få gennemgået sit setup hurtigt: jo længere der går, jo flere krav forældes. <a href="/shippy-preview/fragttjek">Book et fragttjek</a>, så kigger vi på perioden sammen.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-about">
+        <a class="brand" href="/shippy-preview/" aria-label="Shippy — forside">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 6c-9 6-14 16-14 27 0 10 5 19 13 24 2-9 1-17-2-25-3-9-2-18 3-26z" fill="#2ba548"/>
+        <path d="M24 8c8 4 13 12 13 22 0 12-9 22-21 23 6-6 9-14 9-22 0-9-1-17-1-23z" fill="#34bc53"/>
+        <circle cx="40" cy="26" r="15" fill="#fff"/>
+        <circle cx="36" cy="24" r="4.6" fill="#22303a"/>
+        <path d="M52 22l11 5-11 6z" fill="#f4ce23"/>
+        <path d="M46 30l10 4-9 5z" fill="#f9a825"/>
+      </svg>
+          <span class="brand-name">Shippy</span>
+        </a>
+        <p>Vi gør logistik enkelt for webshops og virksomheder i vækst. Fra varemodtagelse til levering — vi tager hånd om hele rejsen.</p>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/shippy-preview/services/lagerhotel">Lagerhotel</a></li>
+          <li><a href="/shippy-preview/services/courier">Courier</a></li>
+          <li><a href="/shippy-preview/services/logistics">Logistics</a></li>
+          <li><a href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a></li>
+          <li><a href="/shippy-preview/priser">Priser</a></li>
+          <li><a href="/shippy-preview/moneyback">Moneyback</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Viden</h4>
+        <ul>
+          <li><a href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a></li>
+          <li><a href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a></li>
+          <li><a href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a></li>
+          <li><a href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a></li>
+          <li><a href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a></li>
+          <li><a href="/shippy-preview/blog">Alle artikler</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+4560400000">+45 60 40 00 00</a></li>
+          <li><a href="mailto:frank@shippy.dk">frank@shippy.dk</a></li>
+          <li><a href="/shippy-preview/partnere">Partnere</a></li>
+          <li><a href="/shippy-preview/karriere">Karriere</a></li>
+          <li><a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">LinkedIn &nearr;</a></li>
+        </ul>
+
+        <h4 style="margin-top:24px">Følg os</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">Shippy på LinkedIn &nearr;</a></li>
+          <li><a href="https://www.linkedin.com/in/frank-buchmann-7618933/" rel="noopener" target="_blank">Frank Buchmann på LinkedIn &nearr;</a></li>
+        </ul>
+        <address style="margin-top:16px">
+          <b style="color:var(--on-stage)">Herning</b> — Ellevænget 5, 7400<br />
+          <b style="color:var(--on-stage)">Grenaa</b> — Rugvænget 7B, 8500<br />
+          Man–tor 08–16 · fre 08–15
+        </address>
+      </div>
+    </div>
+
+    <div class="ft-bottom">
+      <span>© 2026 Shippy ApS · CVR 43829378 · NSAB-medlem</span>
+      <nav class="ft-legal" aria-label="Juridisk">
+        <a href="/shippy-preview/persondatapolitik">Persondatapolitik</a>
+        <a href="/shippy-preview/cookiepolitik">Cookiepolitik</a>
+        <a href="/shippy-preview/handelsbetingelser">Handelsbetingelser</a>
+      </nav>
+      <!--
+        SOCIALE PROFILER — kun verificerede links står her.
+        Verificeret: linkedin.com/company/shippy-dk (titel "Shippy.dk | LinkedIn")
+                     linkedin.com/in/frank-buchmann-7618933
+        IKKE fundet: Facebook og Instagram. De @shippy-konti, der dukker op på
+        Instagram (@shippypro, @shippy_app), er andre virksomheder.
+        Har I profilerne, så indsæt URL'en herunder og fjern kommentaren —
+        og husk samtidig at føje dem til "sameAs" i Organization-schemaet
+        i index.html. Et forkert socialt link er præcis den fejl, SEO-rapporten
+        påpegede i den gamle footer.
+      -->
+      <div class="ft-social">
+        <a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.6 8.75 22 11 22 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21H9z"/></svg>
+          <span>Følg os på LinkedIn</span>
+        </a>
+        <!-- <a href="https://www.facebook.com/UDFYLD" aria-label="Shippy på Facebook" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.8l.42-3.25H13.5V8.67c0-.94.26-1.58 1.6-1.58h1.71V4.18C16.52 4.12 15.51 4 14.33 4 11.99 4 10.4 5.43 10.4 8.05v2.7H7.6V14h2.8v8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/UDFYLD/" aria-label="Shippy på Instagram" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a> -->
+      </div>
+    </div>
+
+    <p class="ft-nsab">
+      All services rendered are subject to the General Conditions of the Nordic Association of Freight
+      Forwarders (NSAB 2000), with the exclusion of § 25 A, first section.
+      <a href="/shippy-preview/handelsbetingelser">Se de fulde betingelser</a>.
+    </p>
+  </div>
+
+  <!-- Fast kontaktbar på mobil (konverteringsanalysen: +43,1% benchmark).
+       Ligger inde i footer-elementet, så build.py's injektion forbliver
+       idempotent — fixed positionering er upåvirket af placeringen. -->
+  <div class="mobilebar" role="navigation" aria-label="Hurtig kontakt">
+    <a class="mb-call" href="tel:+4560400000">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+      Ring 60 40 00 00
+    </a>
+    <a class="mb-cta" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+  </div>
+</footer>
+
+<script src="/shippy-preview/assets/shippy.js" defer></script>
+</body>
+</html>

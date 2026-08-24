@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Pluk og pak best practices: hurtigere ordrebehandling uden fejl | Shippy</title>
+<meta name="description" content="Alle webshops ønsker hurtige leveringer uden fejl. Forbrugerne forventer det, og marginerne afhænger af det. Nøglen ligger i den hverdag, der foregår mellem reolerne: pluk og pak. Når den del kører skarpt, falder fejlprocenten, hastigheden stiger, og både kundeservice og økonomi mærker forskellen." />
+<link rel="canonical" href="https://www.shippy.dk/blog/pluk-og-pak-best-practices" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#051726" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Shippy" />
+<meta property="og:locale" content="da_DK" />
+<meta property="og:url" content="https://www.shippy.dk/blog/pluk-og-pak-best-practices" />
+<meta property="og:title" content="Pluk og pak best practices: hurtigere ordrebehandling uden fejl" />
+<meta property="og:description" content="Alle webshops ønsker hurtige leveringer uden fejl. Forbrugerne forventer det, og marginerne afhænger af det. Nøglen ligger i den hverdag, der foregår mellem reolerne: pluk og pak. Når den del kører skarpt, falder fejlprocenten, hastigheden stiger, og både kundeservice og økonomi mærker forskellen." />
+<meta property="og:image" content="https://www.shippy.dk/img/shippy-og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@shippydk" />
+<meta name="twitter:title" content="Pluk og pak best practices: hurtigere ordrebehandling uden fejl" />
+<meta name="twitter:description" content="Alle webshops ønsker hurtige leveringer uden fejl. Forbrugerne forventer det, og marginerne afhænger af det. Nøglen ligger i den hverdag, der foregår mellem reolerne: pluk og pak. Når den del kører skarpt, falder fejlprocenten, hastigheden stiger, og både kundeservice og økonomi mærker forskellen." />
+<meta name="twitter:image" content="https://www.shippy.dk/img/shippy-og.jpg" />
+
+<link rel="stylesheet" href="/shippy-preview/assets/fonts.css" />
+<link rel="stylesheet" href="/shippy-preview/assets/shippy.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.shippy.dk/blog/pluk-og-pak-best-practices#webpage",
+      "url": "https://www.shippy.dk/blog/pluk-og-pak-best-practices",
+      "name": "Pluk og pak best practices: hurtigere ordrebehandling uden fejl | Shippy",
+      "inLanguage": "da-DK",
+      "isPartOf": {
+        "@id": "https://www.shippy.dk/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.shippy.dk/blog/pluk-og-pak-best-practices#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.shippy.dk/blog/pluk-og-pak-best-practices#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Forside",
+          "item": "https://www.shippy.dk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.shippy.dk/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pluk og pak best practices: hurtigere ordrebehandling uden fejl",
+          "item": "https://www.shippy.dk/blog/pluk-og-pak-best-practices"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.shippy.dk/blog/pluk-og-pak-best-practices#article",
+      "headline": "Pluk og pak best practices: hurtigere ordrebehandling uden fejl",
+      "description": "Alle webshops ønsker hurtige leveringer uden fejl. Forbrugerne forventer det, og marginerne afhænger af det. Nøglen ligger i den hverdag, der foregår mellem reolerne: pluk og pak. Når den del kører skarpt, falder fejlprocenten, hastigheden stiger, og både kundeservice og økonomi mærker forskellen.",
+      "inLanguage": "da-DK",
+      "author": {
+        "@type": "Person",
+        "name": "Rasmus Cort"
+      },
+      "publisher": {
+        "@id": "https://www.shippy.dk/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://www.shippy.dk/blog/pluk-og-pak-best-practices#webpage"
+      },
+      "wordCount": 1521,
+      "datePublished": "2025-10-16",
+      "dateModified": "2026-08-24"
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<a class="skip" href="#main">Spring til indhold</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/shippy-preview/" aria-label="Shippy — forside">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 6c-9 6-14 16-14 27 0 10 5 19 13 24 2-9 1-17-2-25-3-9-2-18 3-26z" fill="#2ba548"/>
+        <path d="M24 8c8 4 13 12 13 22 0 12-9 22-21 23 6-6 9-14 9-22 0-9-1-17-1-23z" fill="#34bc53"/>
+        <circle cx="40" cy="26" r="15" fill="#fff"/>
+        <circle cx="36" cy="24" r="4.6" fill="#22303a"/>
+        <path d="M52 22l11 5-11 6z" fill="#f4ce23"/>
+        <path d="M46 30l10 4-9 5z" fill="#f9a825"/>
+      </svg>
+      <span class="brand-name">Shippy</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hovedmenu">
+      <div class="has-menu">
+        <a href="/shippy-preview/services" class="nav-top" aria-expanded="false" aria-controls="mm-services">
+          Services
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-services">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/lagerhotel">Lagerhotel</a>
+            <p class="mm-blurb">Opbevaring, pluk &amp; pak og returflow</p>
+            <ul>
+              <li><a href="/shippy-preview/services/lagerhotel/varemodtagelse">Varemodtagelse</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/lagerstyring">Lagerstyring</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/pluk-og-pak">Pluk &amp; pak</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/returhaandtering">Returhåndtering</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/kvalitetskontrol">Kvalitetskontrol</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/webshop-integration">Webshop-integration</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/midlertidig-opbevaring">Midlertidig opbevaring</a></li>
+              <li><a href="/shippy-preview/services/lagerhotel/api-edi">API &amp; EDI</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/courier">Courier</a>
+            <p class="mm-blurb">Fragt og levering i hele Danmark</p>
+            <ul>
+              <li><a href="/shippy-preview/services/courier/dag-til-dag">Dag-til-dag</a></li>
+              <li><a href="/shippy-preview/services/courier/express">Express &amp; same-day</a></li>
+              <li><a href="/shippy-preview/services/courier/erhverv-privat">Erhverv &amp; privat</a></li>
+              <li><a href="/shippy-preview/services/courier/pakke-stykgods">Pakke &amp; stykgods</a></li>
+              <li><a href="/shippy-preview/services/courier/track-trace">Track &amp; trace</a></li>
+              <li><a href="/shippy-preview/services/courier/returdistribution">Returdistribution</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/services/logistics">Logistics</a>
+            <p class="mm-blurb">Import, eksport og cross-border</p>
+            <ul>
+              <li><a href="/shippy-preview/services/logistics/import-supply-chain">Import &amp; supply chain</a></li>
+              <li><a href="/shippy-preview/services/logistics/soefragt-luftfragt">Søfragt &amp; luftfragt</a></li>
+              <li><a href="/shippy-preview/services/logistics/cross-border">Cross-border &amp; IOSS</a></li>
+              <li><a href="/shippy-preview/services/logistics/lager-distribution">Lager &amp; distribution</a></li>
+              <li><a href="/shippy-preview/services/logistics/fleksible-losninger">Fleksible løsninger</a></li>
+              <li><a href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/cases" class="nav-top" aria-expanded="false" aria-controls="mm-cases">
+          Cases
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-cases">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/cases">Kundehistorier</a>
+            <p class="mm-blurb">Brands vi pakker for hver dag</p>
+            <ul>
+              <li><a href="/shippy-preview/cases/sorry-mom">Sorry Mom</a></li>
+              <li><a href="/shippy-preview/cases/moneymum">Moneymum</a></li>
+              <li><a href="/shippy-preview/cases/britt-sisseck">Britt Sisseck</a></li>
+              <li><a href="/shippy-preview/cases">Alle cases</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/partnere">Partnere</a>
+            <p class="mm-blurb">Organisationer vi arbejder sammen med</p>
+            <ul>
+              <li><a href="/shippy-preview/partnere#dmt">DM&amp;T — Dansk Mode &amp; Textil</a></li>
+              <li><a href="/shippy-preview/partnere#smvdanmark">SMVdanmark</a></li>
+              <li><a href="/shippy-preview/partnere#float">FLOAT</a></li>
+              <li><a href="/shippy-preview/partnere#bliv-partner">Bliv partner</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/blog" class="nav-top" aria-expanded="false" aria-controls="mm-viden">
+          Viden
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-viden">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/blog">Kom i gang</a>
+            <p class="mm-blurb">Det du bør vide, før du skifter</p>
+            <ul>
+              <li><a href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a></li>
+              <li><a href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a></li>
+              <li><a href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a></li>
+              <li><a href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/blog">Drift &amp; økonomi</a>
+            <p class="mm-blurb">Regnestykker og best practice</p>
+            <ul>
+              <li><a href="/shippy-preview/blog/logistikomkostning-pr-ordre">Logistikomkostning pr. ordre</a></li>
+              <li><a href="/shippy-preview/blog/returhaandtering-webshop">Returhåndtering</a></li>
+              <li><a href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a></li>
+              <li><a href="/shippy-preview/blog/international-forsendelse-ioss">International forsendelse &amp; IOSS</a></li>
+            </ul>
+          </div>
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/faq">Spørgsmål &amp; svar</a>
+            <p class="mm-blurb">48 spørgsmål, besvaret kort</p>
+            <ul>
+              <li><a href="/shippy-preview/faq">Alle spørgsmål</a></li>
+              <li><a href="/shippy-preview/faq#pris">Priser og økonomi</a></li>
+              <li><a href="/shippy-preview/faq#drift">Drift og kvalitet</a></li>
+              <li><a href="/shippy-preview/faq#fragt">Fragt og levering</a></li>
+              <li><a href="/shippy-preview/faq#intl">International handel</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-menu">
+        <a href="/shippy-preview/om-os" class="nav-top" aria-expanded="false" aria-controls="mm-om-os">
+          Om os
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="megamenu" id="mm-om-os">
+          <div class="mm-in">
+          <div class="mm-col">
+            <a class="mm-lead" href="/shippy-preview/om-os">Om Shippy</a>
+            <p class="mm-blurb">Menneskene og måden vi arbejder på</p>
+            <ul>
+              <li><a href="/shippy-preview/om-os/vaerdier">Værdier</a></li>
+              <li><a href="/shippy-preview/om-os/vision">Vision</a></li>
+              <li><a href="/shippy-preview/om-os/mission">Mission</a></li>
+              <li><a href="/shippy-preview/om-os/team">Teamet</a></li>
+              <li><a href="/shippy-preview/om-os/ansvarlighed">Ansvarlighed</a></li>
+              <li><a href="/shippy-preview/karriere">Karriere</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <a href="/shippy-preview/priser">Priser</a>
+      <a href="/shippy-preview/kontakt">Kontakt</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="nav-money" href="/shippy-preview/moneyback">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14l-4 4 4 4"/><path d="M5 18h11a4 4 0 0 0 4-4V4"/></svg>
+        Moneyback
+      </a>
+      <button class="theme-btn" id="searchBtn" type="button" aria-label="Søg på sitet" aria-haspopup="dialog">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      </button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Skift mellem lyst og mørkt tema">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.8 6.8 0 0 0 10.8 10.8z"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+      <button class="burger" id="burger" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <details><summary>Services</summary>
+    <a class="dr-lead" href="/shippy-preview/services/lagerhotel">Lagerhotel</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/varemodtagelse">Varemodtagelse</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/lagerstyring">Lagerstyring</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/pluk-og-pak">Pluk &amp; pak</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/returhaandtering">Returhåndtering</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/kvalitetskontrol">Kvalitetskontrol</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/webshop-integration">Webshop-integration</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/midlertidig-opbevaring">Midlertidig opbevaring</a>
+    <a class="dr-sub" href="/shippy-preview/services/lagerhotel/api-edi">API &amp; EDI</a>
+    <a class="dr-lead" href="/shippy-preview/services/courier">Courier</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/dag-til-dag">Dag-til-dag</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/express">Express &amp; same-day</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/erhverv-privat">Erhverv &amp; privat</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/pakke-stykgods">Pakke &amp; stykgods</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/track-trace">Track &amp; trace</a>
+    <a class="dr-sub" href="/shippy-preview/services/courier/returdistribution">Returdistribution</a>
+    <a class="dr-lead" href="/shippy-preview/services/logistics">Logistics</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/import-supply-chain">Import &amp; supply chain</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/soefragt-luftfragt">Søfragt &amp; luftfragt</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/cross-border">Cross-border &amp; IOSS</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/lager-distribution">Lager &amp; distribution</a>
+    <a class="dr-sub" href="/shippy-preview/services/logistics/fleksible-losninger">Fleksible løsninger</a>
+    <a class="dr-sub" href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a>
+  </details>
+  <details><summary>Cases</summary>
+    <a class="dr-lead" href="/shippy-preview/cases">Kundehistorier</a>
+    <a class="dr-sub" href="/shippy-preview/cases/sorry-mom">Sorry Mom</a>
+    <a class="dr-sub" href="/shippy-preview/cases/moneymum">Moneymum</a>
+    <a class="dr-sub" href="/shippy-preview/cases/britt-sisseck">Britt Sisseck</a>
+    <a class="dr-sub" href="/shippy-preview/cases">Alle cases</a>
+    <a class="dr-lead" href="/shippy-preview/partnere">Partnere</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#dmt">DM&amp;T — Dansk Mode &amp; Textil</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#smvdanmark">SMVdanmark</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#float">FLOAT</a>
+    <a class="dr-sub" href="/shippy-preview/partnere#bliv-partner">Bliv partner</a>
+  </details>
+  <details><summary>Viden</summary>
+    <a class="dr-lead" href="/shippy-preview/blog">Kom i gang</a>
+    <a class="dr-sub" href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a>
+    <a class="dr-sub" href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a>
+    <a class="dr-sub" href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a>
+    <a class="dr-sub" href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a>
+    <a class="dr-lead" href="/shippy-preview/blog">Drift &amp; økonomi</a>
+    <a class="dr-sub" href="/shippy-preview/blog/logistikomkostning-pr-ordre">Logistikomkostning pr. ordre</a>
+    <a class="dr-sub" href="/shippy-preview/blog/returhaandtering-webshop">Returhåndtering</a>
+    <a class="dr-sub" href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a>
+    <a class="dr-sub" href="/shippy-preview/blog/international-forsendelse-ioss">International forsendelse &amp; IOSS</a>
+    <a class="dr-lead" href="/shippy-preview/faq">Spørgsmål &amp; svar</a>
+    <a class="dr-sub" href="/shippy-preview/faq">Alle spørgsmål</a>
+    <a class="dr-sub" href="/shippy-preview/faq#pris">Priser og økonomi</a>
+    <a class="dr-sub" href="/shippy-preview/faq#drift">Drift og kvalitet</a>
+    <a class="dr-sub" href="/shippy-preview/faq#fragt">Fragt og levering</a>
+    <a class="dr-sub" href="/shippy-preview/faq#intl">International handel</a>
+  </details>
+  <details><summary>Om os</summary>
+    <a class="dr-lead" href="/shippy-preview/om-os">Om Shippy</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/vaerdier">Værdier</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/vision">Vision</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/mission">Mission</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/team">Teamet</a>
+    <a class="dr-sub" href="/shippy-preview/om-os/ansvarlighed">Ansvarlighed</a>
+    <a class="dr-sub" href="/shippy-preview/karriere">Karriere</a>
+  </details>
+  <a href="/shippy-preview/priser">Priser</a>
+  <a href="/shippy-preview/kontakt">Kontakt</a>
+  <a href="/shippy-preview/moneyback">Moneyback</a>
+  <a class="btn btn-primary" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+</div>
+<div class="search-ov" id="searchOv" role="dialog" aria-modal="true" aria-label="Søg" hidden>
+  <div class="search-box">
+    <input id="searchInput" type="search" placeholder="Søg i sider, guides og spørgsmål …" autocomplete="off" aria-label="Søgeord" />
+    <button class="search-close" id="searchClose" type="button" aria-label="Luk søgning">Esc</button>
+  </div>
+  <ul class="search-res" id="searchRes" role="listbox"></ul>
+  <p class="search-hint" id="searchHint">Skriv for at søge — fx "returhåndtering", "pris" eller "IOSS".</p>
+</div>
+
+<main id="main">
+  <section class="artwrap">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Brødkrumme">
+        <a href="/shippy-preview/">Forside</a> <span aria-hidden="true">/</span>
+        <a href="/shippy-preview/blog">Viden</a> <span aria-hidden="true">/</span>
+        <span>Pluk og pak best practices: hurtigere ordrebehandling uden fejl</span>
+      </nav>
+      <article class="prose article">
+        <h1>Pluk og pak best practices: hurtigere ordrebehandling uden fejl</h1>
+        <p class="byline">Af Rasmus Cort · okt 16, 2025 · Opdateret 2026</p>
+        <p class="art-intro">Alle webshops ønsker hurtige leveringer uden fejl. Forbrugerne forventer det, og marginerne afhænger af det. Nøglen ligger i den hverdag, der foregår mellem reolerne: pluk og pak. Når den del kører skarpt, falder fejlprocenten, hastigheden stiger, og både kundeservice og økonomi mærker forskellen.</p>
+      <aside class="revnote">
+        <b>Redaktionel note — skal rettes før publicering</b>
+        <ul>
+          <li>Nævner lageret i Vejle. Nuværende lagre er Herning og Grenaa.</li>
+          <li>Selvomtale i tredjeperson — omskriv til 'vi'.</li>
+        </ul>
+        <p>Artiklen er hentet tilbage fra Wayback Machine og er ikke fagligt gennemskrevet siden 2025.</p>
+      </aside>
+      <p>Hos Shippy ser vi det dagligt på vores lagre i Vejle og Herning. Effektive, digitale arbejdsgange giver ro på gulvet og tryghed i driften. Her får du en samlet guide til, hvad der virker i praksis, og hvordan din butik kan få samme effekt.</p>
+      <h2>Hvorfor pluk og pak afgør tempo og kvalitet</h2>
+      <ul class="p-list">
+        <li>Hver ekstra meter en plukker går, koster tid.</li>
+        <li>Hver manuel indtastning øger risikoen for fejl.</li>
+        <li>Hver afbrydelse i flowet skaber ventetid ved pakkebordet.</li>
+      </ul>
+      <p>Når layout, metodevalg og data spiller sammen, oplever kunderne færre restordrer, hurtigere afsendelse og færre reklamationer. Samtidig bliver medarbejdernes hverdag lettere, fordi opgaverne er klare og systemunderstøttede.</p>
+      <h2>Grundprincipper for fart og præcision</h2>
+      <p>To metoder går igen i de lagre, der leverer både højt tempo og lav fejlfrekvens: zonepluk og batchpluk. Kombinér dem med et gennemtænkt lagerlayout, så er du et langt skridt foran.</p>
+      <ul class="p-list">
+        <li>Zonepluk: Del lageret op i faste områder. Hver plukker tager kun varer i sin zone. Det skærer markant ned på gangafstand.</li>
+        <li>Batchpluk: Saml flere ordrer i én rute. Det reducerer antallet af tur-retur gennem lageret.</li>
+        <li>ABC-placering: A-varer tæt på pakkeborde og i ergonomisk højde. B- og C-varer længere væk.</li>
+        <li>Tydelig adressering: Klare lokationskoder på hylder, stier og zoner. Fejl opstår ofte, når skiltningen er utydelig.</li>
+        <li>One-way ruter: Undgå plukkere, der møder hinanden frontalt. En fast retning holder flowet i gang.</li>
+      </ul>
+      <p>Et velvalgt mix handler om dine ordreprofiler. Mange små ordrelinjer med få varer pr. ordre? Batchpluk er guld værd. Komplekse ordrer med mange linjer? Zonepluk og god overlevering mellem zoner gør forskellen.</p>
+      <h2>Metoder, der gør arbejdet lettere</h2>
+      <p>Metoderne er ikke enten-eller. Mange vælger zonepluk som grundstruktur og batchpluk inden for hver zone. Det giver tempo uden at miste overblikket.</p>
+      <h2>Den digitale ryggrad: fra ordreindgang til label</h2>
+      <p>Et moderne setup starter med, at ordrer lander automatisk i lagerets system. Der dannes digitale pluklister, og beholdninger opdateres i realtid, så plukkere altid arbejder med korrekte data.</p>
+      <ul class="p-list">
+        <li>Automatisk ordreimport : Ordren hentes direkte fra din webshop eller ERP.</li>
+        <li>Realtime lager: Beholdninger opdateres ved hvert pluk, så oversalg undgås.</li>
+        <li>Print-while-pack: Pakkelabels genereres direkte ved pakkebordet, uden manuelle indtastninger.</li>
+        <li>Integreret fragt : Valg af transportør, service og pris sker i samme flow.</li>
+      </ul>
+      <p>Shippy.dk er koblet op mod udbredte platforme og transportløsninger, så ordrer og labels håndteres i ét samlet forløb. Det forkorter tiden fra “bestilt” til “afsendt” og reducerer antallet af berøringer.</p>
+      <h2>Kvalitetskontrol uden at bremse tempoet</h2>
+      <p>Fejl forebygges bedst ved kilden. Det betyder validering ved pluk, ikke kun ved pak.</p>
+      <ul class="p-list">
+        <li>Scanning ved hylden: Plukkeren får straks besked, hvis varen eller antal ikke matcher ordren.</li>
+        <li>Billedhjælp: Miniaturebilleder i pluk-appen minder om variant og farve, som ofte forveksles.</li>
+        <li>Kontrol ved pakkebord: En hurtig second-check på kritiske ordretyper eller dyre varer.</li>
+        <li>Tjeklister: Enkle, faste trin ved særlige produkter, fx lot- eller datostyring.</li>
+        <li>Fejlanalyse: Registrer afvigelser pr. lokation, SKU og skift. Brug data til at rette reoler, labels eller oplæring.</li>
+      </ul>
+      <p>Det vigtigste er at gøre kontrol til en del af flowet, ikke et separat projekt. Når skanning og tjek er indbygget i den naturlige bevægelse, falder fejl uden at trække tempo ud.</p>
+      <h2>Peak uden kaos: planlægning, træning og kapacitet</h2>
+      <p>Når kampagner rammer, bliver gode vaner afgørende. De mest effektive greb er enkle.</p>
+      <ul class="p-list">
+        <li>Kapacitetsplan: Forudse behov pr. dag og time. Læg faste skemaer for ekstra plukkere.</li>
+        <li>Oplæring light: Korte, gentagne træningspas i scanning, ruter og pakkestandarder.</li>
+        <li>Midlertidige layouts: Flyt kampagnevarer tættere på pakkeborde i perioden.</li>
+        <li>Forpakkede kits: Pak kampagnesæt i forvejen, så plukkere griber ét varenummer.</li>
+        <li>Buffer af emballage: Nok pap, fyld og labels tæt på bordene, så ingen løber tør midt i en bølge.</li>
+        <li>Ekstra afhentninger: Aftal vinduer med transportørerne i god tid.</li>
+      </ul>
+      <p>Hos Shippy.dk skalerer vi op uden at indføre faste lageromkostninger. Kunderne betaler for forbrug, ikke tom kvadratmeter. Det gør det lettere at tage spidsbelastninger ind, når de opstår, uden at binde kapital.</p>
+      <h2>Pakkeborde og materialer: hurtigere, pænere, mere ansvarligt</h2>
+      <p>Pakkebordet er der, hvor farten ofte tabes. Små greb giver stor effekt.</p>
+      <ul class="p-list">
+        <li>Højre hånd – højfrekvente hjælpemidler: Tapemachine, saks, kniv, labelprinter.</li>
+        <li>Venstre hånd – materiale: Fyld, poser, papkasser i de mest brugte størrelser.</li>
+        <li>Standardkassestørrelser: 3 til 5 faste valgmuligheder dækker langt det meste.</li>
+        <li>Forsegling i ét træk: Tapemachines og etiketter på rulle sparer fingre og sekunder.</li>
+        <li>Returvenlighed: Vedlæg returlabel eller QR-vejledning, så service sparer tid senere.</li>
+        <li>Mindre luft i kassen: Korrekt størrelse og fyld mindsker skader, fragtpris og miljøbelastning.</li>
+      </ul>
+      <p>Shippy.dk arbejder målrettet med ansvarlige materialer og stabile, pæne forsendelser. Det handler ikke kun om pris pr. rulle tape, men om helhedsøkonomi og oplevet kvalitet hos slutkunden.</p>
+      <h2>Teknologi der løfter kapacitet og sikkerhed</h2>
+      <ul class="p-list">
+        <li>Håndterminaler med stregkodescanning: Sikrer, at der plukkes korrekt variant, størrelse og antal.</li>
+        <li>Mobilapps: En smartphone med scanner-modul kan dække mange behov i mindre setup.</li>
+        <li>RFID i udvalgte flows: Giver hurtig aflæsning af flere emner på én gang, særligt i tekstil og detail.</li>
+        <li>AMR-robotter og goods-to-person: I større volumener kan robotter bringe kasser til stationer, så plukkere ikke går langt.</li>
+        <li>Transportstyring: Systematisk valg af service og rute, så leveringer rammer den lovede tid til lavest mulig pris.</li>
+      </ul>
+      <p>Det hele giver bedst værdi, når data hænger sammen. En ordre bevæger sig fra webshop til lager og videre til kurer uden manuelle stop. Det er her, integrerede løsninger hos en 3PL som Shippy.dk gør en forskel i hverdagen.</p>
+      <h2>Nøgletal der styrer daglig forbedring</h2>
+      <p>Uden mål bliver forbedringer tilfældige. Start med få, tydelige KPI’er og brug dem i tavlemøder.</p>
+      <p>Når tallene bliver synlige for holdet, kommer idéerne automatisk. Flyt en top-10 vare 15 meter tættere på pakkebordet, og se hvad det gør for plukketiden. Små forbedringer tæller, når de rulles ud på alle ordrer.</p>
+      <h2>Driftsgreb fra gulvet i Vejle og Herning</h2>
+      <p>Erfaring har lært os, at det simple ofte er det stærke. Her er nogle greb, vi bruger ofte hos Shippy.dk:</p>
+      <ul class="p-list">
+        <li>Klare standarder for pluk: Ét sæt regler for, hvordan vi bevæger os, scanner og håndterer afvigelser.</li>
+        <li>Visuelle zoner: Farvekoder på reoler og plukkekasser knytter ordren til zonen.</li>
+        <li>Rollefordeling i peaks: Nogle plukker, andre pakker. Skift hver 2. time for at holde tempo og kvalitet.</li>
+        <li>Daglig fejlreview: 10 minutter i skiftet til at kigge på gårsdagens afvigelser og rette mærkning eller flow.</li>
+        <li>Print-while-pack: Labelen kommer ud, mens varen lander i kassen. Ingen ventetid.</li>
+        <li>Transportvalg i systemet: Billigste hurtige løsning vælges automatisk ud fra vægt, destination og SLA.</li>
+      </ul>
+      <p>Vi driver 3PL på en skalerbar model uden faste lageromkostninger. Kunderne betaler for den plads og de ordrer, der bruges. Samtidig nyder de godt af stordriftsfordele på fragt og et team, der prioriterer præcision og personlig support.</p>
+      <h2>Sådan implementerer du forbedringer i praksis</h2>
+      <ul class="p-list">
+        <li>Kortlæg nuværende ruter: Følg en plukker i 30 minutter. Notér stop, afbrydelser og ekstra skridt.</li>
+        <li>ABC-klassificer varerne: Flyt A-varer tættere på pakkeborde og i let højde.</li>
+        <li>Indfør scanning: Start med top-20 fejl- eller varianttunge produkter.</li>
+        <li>Vælg metode: Zonepluk for komplekse ordrer, batchpluk for mange små ordrer. Kombinér efter behov.</li>
+        <li>Standardisér pakkeborde: 3-5 kassetyper, faste placeringer af værktøj og materiale.</li>
+        <li>Byg peak-playbook: Korte træningsark, ekstra vagter, midlertidige layouts, ekstra afhentningstidspunkter.</li>
+        <li>Mål det vigtigste: Plukketid, fejlrate og gennemløbstid. Tag ét tal ad gangen og forbedr.</li>
+        <li>Lyt til gulvet: Medarbejdernes forslag peger ofte på de hurtigste gevinster.</li>
+      </ul>
+      <p>Hold dig til en rytme: Planlæg, test, mål, justér. Når forbedringer rulles ud i små, sikre skridt, flytter nøgletallene sig uden at skabe uro.</p>
+      <h2>Hvornår giver det mening at få en 3PL med ombord</h2>
+      <ul class="p-list">
+        <li>Skala: Når pluk og pak stjæler fokus fra salg og udvikling.</li>
+        <li>Sæson: Når volumener svinger, og fast bemanding bliver dyr eller ufleksibel.</li>
+        <li>Internationalt salg: Når flere transportører og toldkrav kræver systematik.</li>
+        <li>Vækst: Når du vil op i tempo uden at investere i eget systemlandskab.</li>
+      </ul>
+      <p>Med Shippy.dk får du lagerplads, pluk og pak samt forsendelse samlet ét sted. Ordrer importeres automatisk, scanning sikrer præcision, og fragtaftalerne er på plads. Der er ingen faste lageromkostninger, løsningen skalerer efter behov, og du får support af et erfarent team, der løser hverdagsudfordringer hurtigt.</p>
+      <h2>En bedre hverdag for både kunder og medarbejdere</h2>
+      <p>Når layout, metode og systemer går op, får du:</p>
+      <ul class="p-list">
+        <li>Hurtigere afsendelser og færre supporthenvendelser</li>
+        <li>Lavere retur- og fejlomkostninger</li>
+        <li>En stabil hverdag på gulvet med klar opgavefordeling</li>
+        <li>Nem skalering, når ordremængden hopper op</li>
+      </ul>
+      <p>Det er målet med moderne pluk og pak. Ikke flere lag af kompleksitet, men enklere arbejdsgange, der holder til travle dage.</p>
+      <h2>Mini-tjekliste til næste workshop</h2>
+      <ul class="p-list">
+        <li>Har vi A-varer placeret rigtigt i forhold til pakkebordet?</li>
+        <li>Bruger vi scanning konsekvent ved pluk af varianttunge SKUs?</li>
+        <li>Er zoner tydeligt markeret, og følger vi faste ruter?</li>
+        <li>Får vi automatisk printet labels ved pakken, uden manuel indtastning?</li>
+        <li>Har vi en klar plan for næste kampagneuge: bemanding, layout, afhentninger?</li>
+        <li>Måler vi fejlrate og reagerer vi på afvigelser dagligt?</li>
+        <li>Er vores emballagevalg tilpasset, så der er minimal luft i kasserne?</li>
+      </ul>
+      <p>Shippy.dk hjælper gerne med at kortlægge din nuværende proces og pege på hurtige gevinster. Det kan være alt fra en enkel ændring i layout til fuld integration af ordreflow, scanning og transportvalg. Målet er det samme hver gang: hurtigere ordrebehandling uden fejl og en driftsmodel, der følger din vækst.</p>
+      </article>
+    </div>
+  </section>
+  <section class="section cta" aria-labelledby="cta-h">
+    <canvas id="ctaArt2" aria-hidden="true"></canvas>
+    <div class="wrap cta-in">
+      <span class="eyebrow">Gratis fragttjek</span>
+      <h2 id="cta-h">Klar til at få tallene på din logistik?</h2>
+      <p>Send os dit ordrevolumen og en typisk pakke, så får du en pris — og et ærligt svar, hvis du allerede har en god aftale.</p>
+      <div class="row">
+        <a class="btn btn-primary" href="/shippy-preview/fragttjek">Book dit fragttjek
+          <svg class="arw" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-line" href="tel:+4560400000">Ring 60 40 00 00</a>
+      </div>
+      <p class="fine">Svar inden for én arbejdsdag · Vi ringer aldrig kold</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-about">
+        <a class="brand" href="/shippy-preview/" aria-label="Shippy — forside">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 6c-9 6-14 16-14 27 0 10 5 19 13 24 2-9 1-17-2-25-3-9-2-18 3-26z" fill="#2ba548"/>
+        <path d="M24 8c8 4 13 12 13 22 0 12-9 22-21 23 6-6 9-14 9-22 0-9-1-17-1-23z" fill="#34bc53"/>
+        <circle cx="40" cy="26" r="15" fill="#fff"/>
+        <circle cx="36" cy="24" r="4.6" fill="#22303a"/>
+        <path d="M52 22l11 5-11 6z" fill="#f4ce23"/>
+        <path d="M46 30l10 4-9 5z" fill="#f9a825"/>
+      </svg>
+          <span class="brand-name">Shippy</span>
+        </a>
+        <p>Vi gør logistik enkelt for webshops og virksomheder i vækst. Fra varemodtagelse til levering — vi tager hånd om hele rejsen.</p>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/shippy-preview/services/lagerhotel">Lagerhotel</a></li>
+          <li><a href="/shippy-preview/services/courier">Courier</a></li>
+          <li><a href="/shippy-preview/services/logistics">Logistics</a></li>
+          <li><a href="/shippy-preview/services/kundeservice">Outsourcet kundeservice</a></li>
+          <li><a href="/shippy-preview/priser">Priser</a></li>
+          <li><a href="/shippy-preview/moneyback">Moneyback</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Viden</h4>
+        <ul>
+          <li><a href="/shippy-preview/blog/hvad-er-lagerhotel">Hvad er et lagerhotel?</a></li>
+          <li><a href="/shippy-preview/blog/hvad-er-3pl">Hvad er 3PL?</a></li>
+          <li><a href="/shippy-preview/blog/outsource-lager-til-3pl">Outsource dit lager</a></li>
+          <li><a href="/shippy-preview/blog/3pl-vs-eget-lager">3PL vs. eget lager</a></li>
+          <li><a href="/shippy-preview/blog/black-friday-logistik">Black Friday-tjekliste</a></li>
+          <li><a href="/shippy-preview/blog">Alle artikler</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+4560400000">+45 60 40 00 00</a></li>
+          <li><a href="mailto:frank@shippy.dk">frank@shippy.dk</a></li>
+          <li><a href="/shippy-preview/partnere">Partnere</a></li>
+          <li><a href="/shippy-preview/karriere">Karriere</a></li>
+          <li><a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">LinkedIn &nearr;</a></li>
+        </ul>
+
+        <h4 style="margin-top:24px">Følg os</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">Shippy på LinkedIn &nearr;</a></li>
+          <li><a href="https://www.linkedin.com/in/frank-buchmann-7618933/" rel="noopener" target="_blank">Frank Buchmann på LinkedIn &nearr;</a></li>
+        </ul>
+        <address style="margin-top:16px">
+          <b style="color:var(--on-stage)">Herning</b> — Ellevænget 5, 7400<br />
+          <b style="color:var(--on-stage)">Grenaa</b> — Rugvænget 7B, 8500<br />
+          Man–tor 08–16 · fre 08–15
+        </address>
+      </div>
+    </div>
+
+    <div class="ft-bottom">
+      <span>© 2026 Shippy ApS · CVR 43829378 · NSAB-medlem</span>
+      <nav class="ft-legal" aria-label="Juridisk">
+        <a href="/shippy-preview/persondatapolitik">Persondatapolitik</a>
+        <a href="/shippy-preview/cookiepolitik">Cookiepolitik</a>
+        <a href="/shippy-preview/handelsbetingelser">Handelsbetingelser</a>
+      </nav>
+      <!--
+        SOCIALE PROFILER — kun verificerede links står her.
+        Verificeret: linkedin.com/company/shippy-dk (titel "Shippy.dk | LinkedIn")
+                     linkedin.com/in/frank-buchmann-7618933
+        IKKE fundet: Facebook og Instagram. De @shippy-konti, der dukker op på
+        Instagram (@shippypro, @shippy_app), er andre virksomheder.
+        Har I profilerne, så indsæt URL'en herunder og fjern kommentaren —
+        og husk samtidig at føje dem til "sameAs" i Organization-schemaet
+        i index.html. Et forkert socialt link er præcis den fejl, SEO-rapporten
+        påpegede i den gamle footer.
+      -->
+      <div class="ft-social">
+        <a href="https://www.linkedin.com/company/shippy-dk/" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.6 8.75 22 11 22 14.5V21h-4v-5.8c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.5-2.3 3.1V21H9z"/></svg>
+          <span>Følg os på LinkedIn</span>
+        </a>
+        <!-- <a href="https://www.facebook.com/UDFYLD" aria-label="Shippy på Facebook" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.8l.42-3.25H13.5V8.67c0-.94.26-1.58 1.6-1.58h1.71V4.18C16.52 4.12 15.51 4 14.33 4 11.99 4 10.4 5.43 10.4 8.05v2.7H7.6V14h2.8v8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/UDFYLD/" aria-label="Shippy på Instagram" rel="noopener" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a> -->
+      </div>
+    </div>
+
+    <p class="ft-nsab">
+      All services rendered are subject to the General Conditions of the Nordic Association of Freight
+      Forwarders (NSAB 2000), with the exclusion of § 25 A, first section.
+      <a href="/shippy-preview/handelsbetingelser">Se de fulde betingelser</a>.
+    </p>
+  </div>
+
+  <!-- Fast kontaktbar på mobil (konverteringsanalysen: +43,1% benchmark).
+       Ligger inde i footer-elementet, så build.py's injektion forbliver
+       idempotent — fixed positionering er upåvirket af placeringen. -->
+  <div class="mobilebar" role="navigation" aria-label="Hurtig kontakt">
+    <a class="mb-call" href="tel:+4560400000">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+      Ring 60 40 00 00
+    </a>
+    <a class="mb-cta" href="/shippy-preview/fragttjek">Få et gratis fragttjek</a>
+  </div>
+</footer>
+
+<script src="/shippy-preview/assets/shippy.js" defer></script>
+</body>
+</html>
