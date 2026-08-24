@@ -135,6 +135,9 @@ footer{padding:26px 0 44px;color:var(--faint);font-size:12.5px;line-height:1.6}
       <button data-x="Hvad koster 40 expresspakker på 6 kg til USA om måneden?">🇺🇸 40 expresspakker à 6 kg til USA/md</button>
       <button data-x="200 pakker til Tyskland om ugen">🇩🇪 200 pakker til Tyskland/uge <em>(mangler vægt → agenten spørger)</em></button>
     </div>
+    <p style="margin:12px 0 0;font:500 12px/1.5 var(--mono);color:var(--faint)">
+      TALE: tryk <b style="color:var(--ink)">Tal</b>, sig dit behov i dit eget tempo — pauser er
+      okay — og tryk igen, når du er færdig. Alt kan rettes i feltet bagefter.</p>
   </div>
 
   <div id="pipeline"></div>
@@ -440,11 +443,15 @@ document.querySelectorAll(".examples [data-x]").forEach(function(b){
   });
 });
 
-/* Taleinput: ægte talegenkendelse hvor browseren tillader det (Chrome/Edge,
-   førsteparts-side med mikrofontilladelse). Blokeres den — fx i et sandboxet
-   miljø eller Safari — vises en forklaring i stedet. Aldrig en død knap. */
+/* Taleinput — bygget som diktering, ikke som "one-shot":
+   · continuous + auto-genstart: en tænkepause afbryder ikke optagelsen
+     (Chrome afslutter selv sessionen ved stilhed; vi starter den igen
+     og BEHOLDER det, der allerede er sagt)
+   · alt akkumuleres i feltet — intet slettes ved genstart
+   · brugeren styrer afslutningen: tryk på mikrofonen igen → beregn */
 var mic = document.getElementById("mic");
 var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var micLabel = mic.childNodes[mic.childNodes.length-1];
 
 function micNote(msg){
   var old = document.getElementById("micnote");
@@ -455,38 +462,76 @@ function micNote(msg){
   mic.closest(".console").appendChild(n);
 }
 
+var rec = null, listening = false, finalBuf = "", sessionFinal = "";
+
+function updateField(interim){
+  var parts = [finalBuf, sessionFinal, interim].filter(Boolean);
+  document.getElementById("q").value = parts.join(" ").replace(/\s+/g, " ").trim();
+}
+function setMicUI(){
+  mic.classList.toggle("rec", listening);
+  micLabel.textContent = listening ? " Lyt … (tryk for at beregne)" : " Tal";
+}
+function stopAndRun(){
+  listening = false;
+  setMicUI();
+  if(rec){ try{ rec.stop(); }catch(e){} }
+  var v = document.getElementById("q").value.trim();
+  if(v) run(v);
+}
+
+function startSession(){
+  rec = new SR();
+  rec.lang = "da-DK";
+  rec.continuous = true;        // pauser afslutter ikke sessionen
+  rec.interimResults = true;
+  sessionFinal = "";
+
+  rec.onresult = function(e){
+    var fin = "", interim = "";
+    for(var i = 0; i < e.results.length; i++){
+      if(e.results[i].isFinal) fin += e.results[i][0].transcript + " ";
+      else interim += e.results[i][0].transcript + " ";
+    }
+    sessionFinal = fin.trim();
+    updateField(interim.trim());
+  };
+  rec.onerror = function(e){
+    if(e.error === "not-allowed" || e.error === "service-not-allowed"){
+      listening = false; setMicUI();
+      micNote("<b>Browseren gav ikke adgang til mikrofonen.</b> Klik på mikrofon-ikonet i adresselinjen, vælg Tillad, og prøv igen.");
+    }
+    // 'no-speech'/'aborted' ignoreres — onend genstarter, hvis vi stadig lytter
+  };
+  rec.onend = function(){
+    // gem sessionens resultat, FØR der genstartes — intet må gå tabt
+    if(sessionFinal){ finalBuf = (finalBuf + " " + sessionFinal).trim(); sessionFinal = ""; }
+    if(listening){
+      try{ startSession(); }catch(e){ listening = false; setMicUI(); }
+    }
+  };
+  rec.start();
+}
+
 mic.addEventListener("click", function(){
   var old = document.getElementById("micnote");
   if(old) old.remove();
   if(!SR){
-    micNote("<b>Taleinput understøttes ikke i denne browser.</b> Brug Chrome eller Edge for at tale til agenten.");
+    micNote("<b>Taleinput understøttes ikke i denne browser</b> (typisk Safari). Brug Chrome eller Edge for at tale til agenten.");
     return;
   }
-  try{
-    var rec = new SR();
-    rec.lang = "da-DK"; rec.interimResults = true;
-    mic.classList.add("rec");
-    var got = false;
-    rec.onresult = function(e){
-      got = true;
-      var t = Array.prototype.map.call(e.results, function(r){ return r[0].transcript; }).join(" ");
-      document.getElementById("q").value = t;
-      if(e.results[e.results.length-1].isFinal){ mic.classList.remove("rec"); rec.stop(); run(t); }
-    };
-    rec.onerror = function(e){
-      mic.classList.remove("rec");
-      if(e.error === "not-allowed" || e.error === "service-not-allowed"){
-        micNote("<b>Browseren gav ikke adgang til mikrofonen.</b> Tillad mikrofon for siden og prøv igen.");
-      } else if(e.error !== "aborted" && e.error !== "no-speech"){
-        micNote("<b>Taleinput kunne ikke starte her.</b>");
-      }
-    };
-    rec.onend = function(){ mic.classList.remove("rec"); };
-    rec.start();
-  }catch(err){
-    mic.classList.remove("rec");
-    micNote("<b>Taleinput kunne ikke starte i dette miljø.</b>");
-  }
+  if(listening){ stopAndRun(); return; }
+  // start: byg videre på det, der allerede står i feltet
+  finalBuf = document.getElementById("q").value.trim();
+  listening = true;
+  setMicUI();
+  try{ startSession(); }
+  catch(err){ listening = false; setMicUI(); micNote("<b>Taleinput kunne ikke starte i dette miljø.</b>"); }
+});
+
+// trykker man Beregn midt i en optagelse, afsluttes og beregnes
+document.getElementById("go").addEventListener("click", function(){
+  if(listening){ listening = false; setMicUI(); if(rec){ try{ rec.stop(); }catch(e){} } }
 });
 })();
 </script>
